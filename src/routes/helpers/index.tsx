@@ -1,13 +1,11 @@
+import { LoginPage } from '../../pages/auth/LoginPage';
+import { HomePage } from '../../pages/community/HomePage';
 import { RouteItem } from '../types';
 
 export const PUBLIC_ROUTES: Array<RouteItem> = [
 	{
-		path: '/',
-		element: <div />,
-	},
-	{
 		path: '/login',
-		element: <div>login</div>,
+		element: <LoginPage />,
 	},
 	{
 		path: '/signup',
@@ -18,6 +16,6 @@ export const PUBLIC_ROUTES: Array<RouteItem> = [
 export const RPOTECTED_ROUTES: Array<RouteItem> = [
 	{
 		path: '/home',
-		element: <div>home</div>,
+		element: <HomePage />,
 	},
 ];

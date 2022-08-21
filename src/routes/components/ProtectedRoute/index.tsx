@@ -1,13 +1,14 @@
 import { Navigate } from 'react-router-dom';
+import { useIsAuthenticated } from '../../../hooks';
 
 type Props = {
 	element: JSX.Element;
 };
 
 export const ProtectedRoute = ({ element }: Props) => {
-	// TODO: add useIsAuthenticated hook and redirect if it returns false
+	const authId = useIsAuthenticated();
 
-	if (true) return <Navigate to='/login' />;
+	if (!authId) return <Navigate to='/login' />;
 
 	return element;
 };
