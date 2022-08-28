@@ -1,4 +1,11 @@
 {
-	"login_tab": "Login",
-	"registration_tab": "Registration"
+	"auth_page_login_tab": "Log In",
+	"auth_page_signup_tab": "Sign Up",
+	"auth_page_ua_language_tab": "UA",
+	"auth_page_eng_language_tab": "ENG",
+
+	"login_page_email_field_placeholder": "email",
+	"login_page_button": "Log In",
+
+	"signup_page_button": "Sign Up"
 }

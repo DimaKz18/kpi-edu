@@ -1,6 +1,6 @@
 import clsx from 'clsx';
-import { CircularProgress, Grid } from '@mui/material';
 import { useStyles } from './styles';
+import { CircularProgress, Grid } from '@mui/material';
 
 type Props = {
 	loaderClassName?: string;

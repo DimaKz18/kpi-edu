@@ -11,7 +11,7 @@ const theme = createTheme({
 		},
 	},
 	typography: {
-		fontFamily: 'Montserrat, sans-serif',
+		fontFamily: 'Comfortaa, sans-serif',
 		fontSize: 16,
 	},
 });
@@ -62,7 +62,7 @@ theme.typography.body2 = {
 	fontStyle: 'normal',
 	fontWeight: 'normal',
 	fontSize: '0.875rem', // 14
-	lineHeight: 1.5,
+	lineHeight: 1.45,
 };
 
 theme.typography.caption = {

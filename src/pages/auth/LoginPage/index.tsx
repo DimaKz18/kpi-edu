@@ -1,8 +1,11 @@
 import { ChangeEvent, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useAppDispatch } from '../../../store';
 import { login } from '../../../service/profile';
-import { Grid } from '@mui/material';
 import { useStyles } from './styles';
+import { Grid } from '@mui/material';
+import { AuthLayout } from '../../../layout/AuthLayout';
+import { LOGIN_TAB } from '../../../layout/AuthLayout/helpers';
 
 export const LoginPage = () => {
 	const [email, setEmail] = useState('');
@@ -10,6 +13,7 @@ export const LoginPage = () => {
 
 	const classes = useStyles();
 	const dispatch = useAppDispatch();
+	const { t } = useTranslation();
 
 	const onEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.currentTarget.value);
@@ -24,16 +28,20 @@ export const LoginPage = () => {
 			email,
 			password,
 		};
-		dispatch(login(loginData));
-		setEmail('');
-		setPassword('');
+
+		// dispatch(login(loginData));
 	};
 
 	return (
-		<Grid container direction='column' alignItems='center' className={classes.root}>
-			<input value={email} onChange={onEmailChange} />
-			<input value={password} onChange={onPasswordChange} />
-			<button onClick={onLoginClick}>Login</button>
-		</Grid>
+		<AuthLayout
+			activeTab={LOGIN_TAB}
+			buttonTitle={t('login_page_button')}
+			onClick={onLoginClick}
+		>
+			<Grid container direction='column' alignItems='center' className={classes.root}>
+				<input value={email} onChange={onEmailChange} />
+				<input value={password} onChange={onPasswordChange} />
+			</Grid>
+		</AuthLayout>
 	);
 };
