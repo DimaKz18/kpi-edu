@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { useStyles } from './styles';
 import { Grid, Box, Typography } from '@mui/material';
 import { NavBar } from './components/NavBar';
@@ -14,7 +13,7 @@ type Props = {
 	onClick: () => void;
 };
 
-export const AuthLayout = memo(({ children, activeTab, buttonTitle, onClick }: Props) => {
+export const AuthLayout = ({ children, activeTab, buttonTitle, onClick }: Props) => {
 	const classes = useStyles();
 
 	return (
@@ -35,6 +34,7 @@ export const AuthLayout = memo(({ children, activeTab, buttonTitle, onClick }: P
 				>
 					<LogoIcon />
 					<TabsMenu activeTab={activeTab} />
+					{children}
 					<PrimaryButton
 						variant='contained'
 						id='auth-button'
@@ -49,4 +49,4 @@ export const AuthLayout = memo(({ children, activeTab, buttonTitle, onClick }: P
 			</Grid>
 		</Box>
 	);
-});
+};

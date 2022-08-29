@@ -5,7 +5,7 @@ export const useStyles = makeStyles(() => ({
 	navigationTabs: {
 		justifyContent: 'space-between',
 		marginTop: 38,
-		width: 272,
+		width: 276,
 	},
 	indicator: {
 		backgroundColor: LightCyanColor,

@@ -4,7 +4,9 @@
 	"auth_page_ua_language_tab": "UA",
 	"auth_page_eng_language_tab": "ENG",
 
-	"login_page_email_field_placeholder": "email",
+	"login_page_email_field_label": "email",
+	"login_page_password_field_label": "password",
+	"login_page_forgot_password": "Forgot password?",
 	"login_page_button": "Log In",
 
 	"signup_page_button": "Sign Up"
