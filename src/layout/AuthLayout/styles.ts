@@ -1,4 +1,5 @@
 import { makeStyles } from '@mui/styles';
+import { LightRed } from '../../utils';
 
 export const useStyles = makeStyles(() => ({
 	root: {
@@ -10,7 +11,10 @@ export const useStyles = makeStyles(() => ({
 	formWrapper: {
 		width: 'fit-content',
 	},
-	actionButton: {
-		marginTop: 20,
+	errorContainer: {
+		minHeight: 56,
+	},
+	error: {
+		color: LightRed,
 	},
 }));

@@ -19,11 +19,7 @@ export const AuthLayout = ({ children, activeTab, buttonTitle, onClick }: Props)
 	return (
 		<Box className={classes.root}>
 			<NavBar />
-			<Grid
-				container
-				justifyContent='space-around'
-				className={classes.contentWrapper}
-			>
+			<Grid container justifyContent='space-around' className={classes.contentWrapper}>
 				<Grid
 					container
 					item
@@ -34,11 +30,20 @@ export const AuthLayout = ({ children, activeTab, buttonTitle, onClick }: Props)
 					<LogoIcon />
 					<TabsMenu activeTab={activeTab} />
 					{children}
+					<Grid
+						container
+						alignItems='center'
+						justifyContent='center'
+						className={classes.errorContainer}
+					>
+						<Typography variant='body2' className={classes.error}>
+							Test error
+						</Typography>
+					</Grid>
 					<PrimaryButton
 						variant='contained'
 						id='auth-button'
 						loading={false}
-						className={classes.actionButton}
 						onClick={onClick}
 					>
 						<Typography variant='body2'>{buttonTitle}</Typography>
