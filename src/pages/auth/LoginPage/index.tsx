@@ -4,10 +4,10 @@ import { useAppDispatch } from '../../../store';
 import { login } from '../../../service/profile';
 import { useStyles } from './styles';
 import { Grid, Typography } from '@mui/material';
+import { UserData, UserDataField } from './helpers';
 import { AuthLayout } from '../../../layout/AuthLayout';
 import { LOGIN_TAB } from '../../../layout/AuthLayout/helpers';
 import { InputFields } from './components/InputFields';
-import { UserData, UserDataField } from './helpers';
 
 export const LoginPage = () => {
 	const [userData, setUserData] = useState<UserData>({

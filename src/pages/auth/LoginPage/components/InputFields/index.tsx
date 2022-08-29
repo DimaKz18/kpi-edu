@@ -23,6 +23,7 @@ export const InputFields = memo(({ userData, onChange }: Props) => {
 		{
 			value: userData.password,
 			label: t('login_page_password_field_label'),
+			type: 'password',
 			id: 'password-input',
 			containerClassName: classes.inputContainer,
 			onChange: (value: ChangeEvent<HTMLInputElement>) => onChange(value, 'password'),
@@ -38,7 +39,8 @@ export const InputFields = memo(({ userData, onChange }: Props) => {
 						value={field.value}
 						variant='standard'
 						label={field.label}
-						id='email-input'
+						type={field.type}
+						id={field.id}
 						containerClassName={field.containerClassName}
 						onChange={field.onChange}
 					/>

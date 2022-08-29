@@ -22,7 +22,6 @@ export const AuthLayout = ({ children, activeTab, buttonTitle, onClick }: Props)
 			<Grid
 				container
 				justifyContent='space-around'
-				alignItems='center'
 				className={classes.contentWrapper}
 			>
 				<Grid

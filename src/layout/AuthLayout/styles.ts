@@ -5,7 +5,7 @@ export const useStyles = makeStyles(() => ({
 		padding: '30px 150px',
 	},
 	contentWrapper: {
-		marginTop: 146,
+		marginTop: 126,
 	},
 	formWrapper: {
 		width: 'fit-content',
