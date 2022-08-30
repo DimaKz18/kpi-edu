@@ -4,6 +4,7 @@ import deviceLanguage from './deviceLanguage';
 
 const resources = {
 	en: { translation: require('./en.json') },
+	ua: { translation: require('./ua.json') },
 };
 
 const fallback = { languageTag: 'en' };

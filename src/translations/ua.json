@@ -1,0 +1,18 @@
+{
+	"auth_page_login_tab": "Увійти",
+	"auth_page_signup_tab": "Зареєструватись",
+	"auth_page_ua_language_tab": "UA",
+	"auth_page_eng_language_tab": "ENG",
+
+	"login_page_email_field_label": "пошта",
+	"login_page_password_field_label": "пароль",
+	"login_page_forgot_password": "Забули пароль?",
+	"login_page_button": "Увійти",
+
+	"signup_page_first_name_field_label": "ім'я",
+	"signup_page_last_name_field_label": "прізвище",
+	"signup_page_email_field_label": "пошта",
+	"signup_page_password_field_label": "пароль",
+	"signup_page_confirm_password_field_label": "підтвердження паролю",
+	"signup_page_button": "Зареєструватись"
+}

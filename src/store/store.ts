@@ -1,7 +1,9 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import profileReducer from '../service/profile/slice';
+import appReducer from '../service/app/slice';
 
 const combinedReducer = combineReducers({
+	app: appReducer,
 	profile: profileReducer,
 });
 

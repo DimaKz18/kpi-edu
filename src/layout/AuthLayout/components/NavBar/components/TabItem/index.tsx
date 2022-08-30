@@ -4,16 +4,16 @@ import { Typography } from '@mui/material';
 import clsx from 'clsx';
 
 type Props = {
-	activeTab: number;
-	value: number;
+	currentLanguage: string;
+	value: string;
 	title: string;
-	onTabClick: (tab: number) => void;
+	onTabClick: (language: string) => void;
 };
 
-export const TabItem = memo(({ activeTab, value, title, onTabClick }: Props) => {
+export const TabItem = memo(({ currentLanguage, value, title, onTabClick }: Props) => {
 	const classes = useStyles();
 
-	const tabClass = clsx(classes.tab, activeTab === value && classes.activeTab);
+	const tabClass = clsx(classes.tab, currentLanguage === value && classes.activeTab);
 
 	const onClick = () => {
 		onTabClick(value);

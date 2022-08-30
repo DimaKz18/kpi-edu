@@ -2,10 +2,10 @@ import { makeStyles } from '@mui/styles';
 
 export const useStyles = makeStyles(() => ({
 	container: {
-		maxWidth: 276,
+		maxWidth: 376,
 	},
 	userDataContainer: {
-		maxWidth: 134,
+		maxWidth: 180,
 	},
 	personalDataContainer: {
 		marginTop: 16,

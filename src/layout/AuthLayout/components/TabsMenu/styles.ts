@@ -4,15 +4,17 @@ import { DarkCyanColor, LightCyanColor } from '../../../../utils';
 export const useStyles = makeStyles(() => ({
 	navigationTabs: {
 		justifyContent: 'space-between',
+		minWidth: 376,
 		marginTop: 38,
-		minWidth: 276,
 	},
 	indicator: {
 		backgroundColor: LightCyanColor,
 	},
 	tab: {
-		textTransform: 'none',
+		minHeight: 0,
+		minWidth: 0,
 		padding: 0,
+		textTransform: 'none',
 		color: `${DarkCyanColor} !important`,
 	},
 	activeTab: {
