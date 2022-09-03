@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorResponse } from '../api';
 import { User } from './models';
 import { login, logout } from './actions';
@@ -18,12 +18,17 @@ const initialState: ProfileState = {
 const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
-	reducers: {},
+	reducers: {
+		setUser: (state, action: PayloadAction<User>) => {
+			state.user = action.payload;
+		},
+	},
 	extraReducers: (builder) => {
 		builder
 			.addCase(login.fulfilled, (state, action) => {
-				state.user = action.payload;
-				state.loadingUser = false;
+				console.log(action.payload);
+				// state.user = action.payload;
+				// state.loadingUser = false;
 				// TODO
 				// localStorage.setItem('token', action.payload)
 			})
@@ -52,5 +57,7 @@ const profileSlice = createSlice({
 			});
 	},
 });
+
+export const { setUser } = profileSlice.actions;
 
 export default profileSlice.reducer;

@@ -1,11 +1,11 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 export const $publicRoute = axios.create({
-	baseURL: `http://194.233.171.77/api`,
+	baseURL: `https://europe-west1-kpiedu-1fb35.cloudfunctions.net/api`,
 });
 
 export const $protectedRoute = axios.create({
-	baseURL: `http://194.233.171.77/api`,
+	baseURL: `https://europe-west1-kpiedu-1fb35.cloudfunctions.net/api`,
 });
 
 $protectedRoute.interceptors.request.use((config: AxiosRequestConfig) => {
