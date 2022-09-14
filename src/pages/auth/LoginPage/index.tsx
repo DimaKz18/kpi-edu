@@ -1,5 +1,6 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { useAppDispatch } from '../../../store';
 import { login } from '../../../service/profile';
 import { useStyles } from './styles';
@@ -19,10 +20,22 @@ export const LoginPage = () => {
 	const dispatch = useAppDispatch();
 	const { t } = useTranslation();
 
-	const handleLoginClick = () => {
-		console.log(userData);
-		// dispatch(login(loginData));
-	};
+	const handleLoginClick = useCallback(async () => {
+		const { email, password } = userData;
+
+		try {
+			const auth = getAuth();
+
+			const user = (await signInWithEmailAndPassword(auth, email, password)).user;
+			const token = await user.getIdToken();
+
+			const loginData = {
+				idToken: token,
+			};
+
+			dispatch(login(loginData));
+		} catch (e) {}
+	}, [dispatch, userData]);
 
 	const handleUserDataChange = (
 		value: ChangeEvent<HTMLInputElement>,
