@@ -4,10 +4,10 @@ import {
 	axiosGetRequest,
 	getProfileRoute,
 } from '../api';
-import { Profile } from './models';
+import { ProfileResponse } from './dtos';
 
 export const fetchProfileCall = () => {
-	return axiosGetRequest<Profile>(`${getProfileRoute()}`);
+	return axiosGetRequest<ProfileResponse>(`${getProfileRoute()}`);
 };
 
 export const logoutCall = () => {

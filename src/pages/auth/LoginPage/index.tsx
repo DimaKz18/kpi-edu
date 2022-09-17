@@ -37,8 +37,6 @@ export const LoginPage = () => {
 			const user = (await signInWithEmailAndPassword(auth, email, password)).user;
 
 			if (user) {
-				const token = await user.getIdToken();
-				localStorage.setItem('token', token);
 				dispatch(fetchProfile());
 			}
 		} catch (e) {

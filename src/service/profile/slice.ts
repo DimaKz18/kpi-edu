@@ -19,7 +19,7 @@ const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
 	reducers: {
-		setProfile: (state, action: PayloadAction<Profile>) => {
+		setProfile: (state, action: PayloadAction<Profile | undefined>) => {
 			state.profile = action.payload;
 		},
 		setLoadingProfile: (state, action: PayloadAction<boolean>) => {
@@ -29,7 +29,7 @@ const profileSlice = createSlice({
 	extraReducers: (builder) => {
 		builder
 			.addCase(fetchProfile.fulfilled, (state, action) => {
-				state.profile = action.payload;
+				state.profile = action.payload.result;
 				state.loadingProfile = false;
 			})
 			.addCase(fetchProfile.pending, (state) => {

@@ -1,11 +1,13 @@
-import { logout } from '../../../service/profile';
+import { getAuth } from '@firebase/auth';
+import { setProfile } from '../../../service/profile';
 import { useAppDispatch } from '../../../store';
 
 export const HomePage = () => {
 	const dispatch = useAppDispatch();
 
 	const onLogoutClick = () => {
-		dispatch(logout());
+		getAuth().signOut();
+		dispatch(setProfile(undefined));
 	};
 
 	return (
