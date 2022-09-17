@@ -1,7 +1,7 @@
 import { ChangeEvent, memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStyles } from './styles';
-import { UserData, UserDataField } from '../../helpers';
+import { UserData, UserDataField } from '../../types';
 import { InputField } from '../../../../../common/components/InputField';
 
 type Props = {

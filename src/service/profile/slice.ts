@@ -1,63 +1,62 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorResponse } from '../api';
-import { User } from './models';
-import { login, logout } from './actions';
+import { fetchProfile, logout } from './actions';
+import { Profile } from './models';
 
 export type ProfileState = {
-	user?: User;
-	loadingUser: boolean;
-	userError?: ErrorResponse;
+	profile?: Profile;
+	loadingProfile: boolean;
+	profileError?: ErrorResponse;
 };
 
 const initialState: ProfileState = {
-	user: undefined,
-	loadingUser: false,
-	userError: undefined,
+	profile: undefined,
+	loadingProfile: false,
+	profileError: undefined,
 };
 
 const profileSlice = createSlice({
 	name: 'profile',
 	initialState,
 	reducers: {
-		setUser: (state, action: PayloadAction<User>) => {
-			state.user = action.payload;
+		setProfile: (state, action: PayloadAction<Profile>) => {
+			state.profile = action.payload;
+		},
+		setLoadingProfile: (state, action: PayloadAction<boolean>) => {
+			state.loadingProfile = action.payload;
 		},
 	},
 	extraReducers: (builder) => {
 		builder
-			.addCase(login.fulfilled, (state, action) => {
-				console.log(action.payload);
-				// state.user = action.payload;
-				// state.loadingUser = false;
-				// TODO
-				// localStorage.setItem('token', action.payload)
+			.addCase(fetchProfile.fulfilled, (state, action) => {
+				state.profile = action.payload;
+				state.loadingProfile = false;
 			})
-			.addCase(login.pending, (state) => {
-				state.loadingUser = true;
-				state.userError = undefined;
+			.addCase(fetchProfile.pending, (state) => {
+				state.loadingProfile = true;
+				state.profileError = undefined;
 			})
-			.addCase(login.rejected, (state, action) => {
-				state.user = undefined;
-				state.loadingUser = false;
-				state.userError = action.payload;
+			.addCase(fetchProfile.rejected, (state, action) => {
+				state.loadingProfile = false;
+				state.profileError = action.payload;
 			})
 
 			.addCase(logout.fulfilled, (state) => {
-				state.user = undefined;
-				state.loadingUser = false;
+				state.profile = undefined;
+				state.loadingProfile = false;
 				localStorage.removeItem('token');
 			})
 			.addCase(logout.pending, (state) => {
-				state.loadingUser = true;
-				state.userError = undefined;
+				state.loadingProfile = true;
+				state.profileError = undefined;
 			})
 			.addCase(logout.rejected, (state, action) => {
-				state.loadingUser = false;
-				state.userError = action.payload;
+				state.loadingProfile = false;
+				state.profileError = action.payload;
 			});
 	},
 });
 
-export const { setUser } = profileSlice.actions;
+export const { setProfile, setLoadingProfile } = profileSlice.actions;
 
 export default profileSlice.reducer;

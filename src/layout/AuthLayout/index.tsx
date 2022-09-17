@@ -10,10 +10,19 @@ type Props = {
 	children: JSX.Element;
 	activeTab: number;
 	buttonTitle: string;
+	loading: boolean;
+	error?: string;
 	onClick: () => void;
 };
 
-export const AuthLayout = ({ children, activeTab, buttonTitle, onClick }: Props) => {
+export const AuthLayout = ({
+	children,
+	activeTab,
+	buttonTitle,
+	loading,
+	error,
+	onClick,
+}: Props) => {
 	const classes = useStyles();
 
 	return (
@@ -36,14 +45,16 @@ export const AuthLayout = ({ children, activeTab, buttonTitle, onClick }: Props)
 						justifyContent='center'
 						className={classes.errorContainer}
 					>
-						<Typography variant='body2' className={classes.error}>
-							Test error
-						</Typography>
+						{error && (
+							<Typography variant='body2' className={classes.error}>
+								{error}
+							</Typography>
+						)}
 					</Grid>
 					<PrimaryButton
 						variant='contained'
 						id='auth-button'
-						loading={false}
+						loading={loading}
 						onClick={onClick}
 					>
 						<Typography variant='body2'>{buttonTitle}</Typography>

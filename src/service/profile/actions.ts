@@ -1,9 +1,8 @@
 import { createAppAsyncThunk } from '../../store/extensions';
-import { LoginDTO } from './dtos';
-import { loginCall, logoutCall } from './service';
+import { fetchProfileCall, logoutCall } from './service';
 
-export const login = createAppAsyncThunk('profile/login', (loginData: LoginDTO) => {
-	return loginCall(loginData);
+export const fetchProfile = createAppAsyncThunk('profile/getProfile', () => {
+	return fetchProfileCall();
 });
 
 export const logout = createAppAsyncThunk('profile/logout', () => {

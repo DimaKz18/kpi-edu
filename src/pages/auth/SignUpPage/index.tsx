@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useStyles } from './styles';
 import { Grid } from '@mui/material';
-import { UserData, UserDataField } from './helpers';
+import { UserData, UserDataField } from './types';
 import { AuthLayout } from '../../../layout/AuthLayout';
 import { SIGNUP_TAB } from '../../../layout/AuthLayout/helpers';
 import { InputFields } from './components/InputFields';
@@ -37,6 +37,7 @@ export const SignUpPage = () => {
 		<AuthLayout
 			activeTab={SIGNUP_TAB}
 			buttonTitle={t('signup_page_button')}
+			loading={false}
 			onClick={handleSignUpClick}
 		>
 			<Grid container direction='column' className={classes.root}>

@@ -13,6 +13,6 @@ export const $protectedRoute = axios.create({
 
 $protectedRoute.interceptors.request.use((config: AxiosRequestConfig) => {
 	if (!config.headers) return;
-	config.headers.Authorization = `Bearer ${localStorage.getItem('token')}`;
+	config.headers.Authorization = `${localStorage.getItem('token')}`;
 	return config;
 });

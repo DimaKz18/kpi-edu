@@ -3,17 +3,17 @@ import { RootState } from '../../store';
 
 const getProfileState = (state: RootState) => state.profile;
 
-export const selectUser = createSelector(
+export const selectProfile = createSelector(
 	[getProfileState],
-	(profileState) => profileState.user
+	(profileState) => profileState.profile
 );
 
-export const selectLoadingUser = createSelector(
+export const selectLoadingProfile = createSelector(
 	[getProfileState],
-	(profileState) => profileState.loadingUser
+	(profileState) => profileState.loadingProfile
 );
 
-export const selectUserError = createSelector(
+export const selectProfileError = createSelector(
 	[getProfileState],
-	(profileState) => profileState.userError
+	(profileState) => profileState.profileError
 );

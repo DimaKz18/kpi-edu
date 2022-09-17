@@ -1,10 +1,13 @@
-import { axiosPostRequest, getLoginRoute, getLogoutRoute } from '../api';
-import { LoginDTO } from './dtos';
-import { User } from './models';
+import {
+	axiosPostRequest,
+	getLogoutRoute,
+	axiosGetRequest,
+	getProfileRoute,
+} from '../api';
+import { Profile } from './models';
 
-export const loginCall = (loginData: LoginDTO) => {
-	// TODO change axios response type
-	return axiosPostRequest<LoginDTO, User>(`${getLoginRoute()}`, loginData, true);
+export const fetchProfileCall = () => {
+	return axiosGetRequest<Profile>(`${getProfileRoute()}`);
 };
 
 export const logoutCall = () => {
