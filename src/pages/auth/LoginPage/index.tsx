@@ -1,12 +1,8 @@
 import { ChangeEvent, useCallback, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
-import { useAppDispatch, useAppSelector } from '../../../store';
-import {
-	fetchProfile,
-	selectLoadingProfile,
-	setLoadingProfile,
-} from '../../../service/profile';
+import { useAppDispatch } from '../../../store';
+import { fetchProfile } from '../../../service/profile';
 import { useStyles } from './styles';
 import { Grid, Typography } from '@mui/material';
 import { UserData, UserDataField } from './types';
@@ -19,20 +15,18 @@ export const LoginPage = () => {
 		email: '',
 		password: '',
 	});
+	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState('');
 
 	const classes = useStyles();
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 
-	const loadingProfile = useAppSelector(selectLoadingProfile);
-
 	const handleLoginClick = useCallback(async () => {
-		dispatch(setLoadingProfile(true));
-
-		const { email, password } = userData;
+		setLoading(true);
 
 		try {
+			const { email, password } = userData;
 			const auth = getAuth();
 			const user = (await signInWithEmailAndPassword(auth, email, password)).user;
 
@@ -41,8 +35,9 @@ export const LoginPage = () => {
 			}
 		} catch (e) {
 			setError(t('login_page_error'));
-			dispatch(setLoadingProfile(false));
 		}
+
+		setLoading(false);
 	}, [dispatch, userData]);
 
 	const handleUserDataChange = (
@@ -60,7 +55,7 @@ export const LoginPage = () => {
 		<AuthLayout
 			activeTab={LOGIN_TAB}
 			buttonTitle={t('login_page_button')}
-			loading={loadingProfile}
+			loading={loading}
 			error={error}
 			onClick={handleLoginClick}
 		>

@@ -1,4 +1,6 @@
 import { Navigate } from 'react-router-dom';
+import { useAppSelector } from '../../../store';
+import { selectLoadingProfile } from '../../../service/profile';
 import { useIsAuthenticated } from '../../../hooks';
 
 type Props = {
@@ -7,8 +9,11 @@ type Props = {
 
 export const ProtectedRoute = ({ element }: Props) => {
 	const authId = useIsAuthenticated();
+	const loadingProfile = useAppSelector(selectLoadingProfile);
 
-	if (!authId) return <Navigate to='/login' />;
+	const isNotAuthorised = !authId && !loadingProfile;
+
+	if (isNotAuthorised) return <Navigate to='/login' />;
 
 	return element;
 };

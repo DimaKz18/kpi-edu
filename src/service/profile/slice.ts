@@ -11,7 +11,7 @@ export type ProfileState = {
 
 const initialState: ProfileState = {
 	profile: undefined,
-	loadingProfile: false,
+	loadingProfile: true,
 	profileError: undefined,
 };
 
