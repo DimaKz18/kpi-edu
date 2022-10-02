@@ -1,3 +1,2 @@
-export const getReAuthenticateRoute = () => '/reauthenticate';
-export const getLogoutRoute = () => '/logout';
+export const getRegisterRoute = () => '/session/register';
 export const getProfileRoute = () => '/profile';

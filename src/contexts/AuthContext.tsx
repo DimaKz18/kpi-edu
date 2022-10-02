@@ -12,8 +12,8 @@ type Props = {
 export const AuthProvider = ({ children }: Props) => {
 	const [loadingFirebaseAuth, setLoadingFirebaseAuth] = useState(true);
 
-	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const authId = useIsAuthenticated();
 	const loadingProfile = useAppSelector(selectLoadingProfile);
 
@@ -25,6 +25,8 @@ export const AuthProvider = ({ children }: Props) => {
 	useMountEffect(() => {
 		const unsibscribe = auth.onAuthStateChanged(async (profile) => {
 			if (profile) {
+				const token = await profile.getIdToken();
+				localStorage.setItem('token', token);
 				dispatch(fetchProfile());
 			}
 			setLoadingFirebaseAuth(false);

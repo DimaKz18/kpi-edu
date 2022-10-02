@@ -5,6 +5,10 @@ import { RouteItem } from '../types';
 
 export const PUBLIC_ROUTES: Array<RouteItem> = [
 	{
+		path: '/',
+		element: <LoginPage />,
+	},
+	{
 		path: '/login',
 		element: <LoginPage />,
 	},
