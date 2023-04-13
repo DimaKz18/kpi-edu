@@ -1,0 +1,17 @@
+@use 'utils/variables';
+
+.container {
+	margin-top: 30px;
+
+	.errorContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 56px;
+
+		.error {
+			font-size: 14px;
+			color: variables.$LightRed;
+		}
+	}
+}

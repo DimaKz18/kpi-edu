@@ -1,39 +1,37 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useAppDispatch, useAppSelector } from '../../../../../../store';
-import { selectAppLanguage, setAppLanguage } from '../../../../../../service/app';
-import { useStyles } from './styles';
-import { Grid, Box } from '@mui/material';
+import { useAppDispatch, useAppSelector } from 'store';
+import { selectAppLanguage, setAppLanguage } from 'service/app';
 import { ENG_LANGUAGE, UA_LANGUAGE } from '../../helpers';
 import { TabItem } from '../TabItem';
+import styles from './styles.module.scss';
 
 export const Tabs = memo(() => {
-	const classes = useStyles();
-
 	const { t, i18n } = useTranslation();
 	const dispatch = useAppDispatch();
 	const appLanguage = useAppSelector(selectAppLanguage);
 
-	const handleTabClick = useCallback((language: string) => {
-		dispatch(setAppLanguage(language));
-		i18n.changeLanguage(language);
-	}, []);
+	const handleTabClick = useCallback(
+		(language: string) => {
+			dispatch(setAppLanguage(language));
+			i18n.changeLanguage(language);
+		},
+		[dispatch, i18n]
+	);
 
 	return (
-		<Grid container item alignItems='center' className={classes.container}>
+		<div className={styles.container}>
 			<TabItem
-				currentLanguage={appLanguage}
-				value={UA_LANGUAGE}
+				active={appLanguage === UA_LANGUAGE}
 				title={t('auth_page_ua_language_tab')}
-				onTabClick={handleTabClick}
+				onTabClick={() => handleTabClick(UA_LANGUAGE)}
 			/>
-			<Box className={classes.verticalLine} />
+			<div className={styles.verticalLine} />
 			<TabItem
-				currentLanguage={appLanguage}
-				value={ENG_LANGUAGE}
+				active={appLanguage === ENG_LANGUAGE}
 				title={t('auth_page_eng_language_tab')}
-				onTabClick={handleTabClick}
+				onTabClick={() => handleTabClick(ENG_LANGUAGE)}
 			/>
-		</Grid>
+		</div>
 	);
 });

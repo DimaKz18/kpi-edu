@@ -4,9 +4,7 @@ import { i18next } from './translations';
 import { AppRoutes } from './routes';
 import { Provider } from 'react-redux';
 import { AuthProvider } from './contexts/AuthContext';
-import { ThemeProvider } from '@mui/material';
 import { store } from './store';
-import theme from './utils/theme';
 import './firebase';
 
 function App() {
@@ -15,9 +13,7 @@ function App() {
 			<I18nextProvider i18n={i18next}>
 				<Provider store={store}>
 					<AuthProvider>
-						<ThemeProvider theme={theme}>
-							<AppRoutes />
-						</ThemeProvider>
+						<AppRoutes />
 					</AuthProvider>
 				</Provider>
 			</I18nextProvider>

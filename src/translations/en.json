@@ -1,19 +1,19 @@
 {
 	"auth_page_login_tab": "Log In",
-	"auth_page_signup_tab": "Sign Up",
+	"auth_page_sign_up_tab": "Sign Up",
 	"auth_page_ua_language_tab": "UA",
 	"auth_page_eng_language_tab": "ENG",
 
-	"login_page_email_field_label": "email",
-	"login_page_password_field_label": "password",
-	"login_page_forgot_password": "Forgot password?",
-	"login_page_button": "Log In",
+	"login_page_email_field_placeholder": "email",
+	"login_page_password_field_placeholder": "password",
+	"login_page_forgot_password_title": "Forgot password?",
+	"login_page_login_button": "Log In",
 	"login_page_error": "Invalid data",
 
-	"signup_page_first_name_field_label": "first name",
-	"signup_page_last_name_field_label": "last name",
-	"signup_page_email_field_label": "email",
-	"signup_page_password_field_label": "password",
-	"signup_page_confirm_password_field_label": "confirm password",
-	"signup_page_button": "Sign Up"
+	"sign_up_page_first_name_field_placeholder": "first name",
+	"sign_up_page_last_name_field_placeholder": "last name",
+	"sign_up_page_email_field_placeholder": "email",
+	"sign_up_page_password_field_placeholder": "password",
+	"sign_up_page_confirm_password_field_placeholder": "confirm password",
+	"sign_up_page_sign_up_button": "Sign Up"
 }

@@ -1,0 +1,15 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	align-items: center;
+
+	.verticalLine {
+		width: 2px;
+		height: 16px;
+		margin-left: 10px;
+		margin-right: 10px;
+		border-radius: 2px;
+		background-color: variables.$DarkCyan;
+	}
+}

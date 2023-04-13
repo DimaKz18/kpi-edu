@@ -1,2 +1,2 @@
 export const LOGIN_TAB = 0;
-export const SIGNUP_TAB = 1;
+export const SIGN_UP_TAB = 1;

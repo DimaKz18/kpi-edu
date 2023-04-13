@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import { ProtectedRoute } from './components/ProtectedRoute';
-import { PUBLIC_ROUTES, RPOTECTED_ROUTES } from './helpers';
+import { PUBLIC_ROUTES, PROTECTED_ROUTES } from './helpers';
 
 export const AppRoutes = () => {
 	const renderPublicRoutes = () => {
@@ -10,7 +10,7 @@ export const AppRoutes = () => {
 	};
 
 	const renderProtectedRoutes = () => {
-		return RPOTECTED_ROUTES.map((route) => (
+		return PROTECTED_ROUTES.map((route) => (
 			<Route
 				key={route.path}
 				path={route.path}

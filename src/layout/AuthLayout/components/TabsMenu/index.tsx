@@ -1,53 +1,39 @@
-import React, { memo } from 'react';
+import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { useStyles } from './styles';
-import { Tabs, Tab, Typography } from '@mui/material';
-import { LOGIN_TAB, SIGNUP_TAB } from '../../helpers';
+import { login, signUp } from 'routes/routes';
+import { LOGIN_TAB, SIGN_UP_TAB } from '../../helpers';
+import { TabItem } from './TabItem';
+import styles from './styles.module.scss';
 
 type Props = {
 	activeTab: number;
 };
 
 export const TabsMenu = memo(({ activeTab }: Props) => {
-	const classes = useStyles();
 	const { t } = useTranslation();
 	const navigate = useNavigate();
 
-	const handleTabChange = (_: React.ChangeEvent<unknown>, newTab: number) => {
-		navigate(newTab === LOGIN_TAB ? '/login' : '/signup', { replace: true });
-	};
+	const handleTabClick = useCallback(
+		(tab: number) => {
+			const currentPage = tab === LOGIN_TAB ? login : signUp;
+			navigate(currentPage, { replace: true });
+		},
+		[navigate]
+	);
 
 	return (
-		<Tabs
-			value={activeTab}
-			onChange={handleTabChange}
-			aria-label='tabs'
-			classes={{
-				indicator: classes.indicator,
-				flexContainer: classes.navigationTabs,
-			}}
-		>
-			<Tab
-				value={LOGIN_TAB}
-				label={<Typography variant='h2'>{t('auth_page_login_tab')}</Typography>}
-				disableRipple
-				classes={{
-					root: classes.tab,
-					selected: classes.activeTab,
-				}}
-				id='login-tab'
+		<div className={styles.container}>
+			<TabItem
+				active={activeTab === LOGIN_TAB}
+				title={t('auth_page_login_tab')}
+				onTabClick={() => handleTabClick(LOGIN_TAB)}
 			/>
-			<Tab
-				value={SIGNUP_TAB}
-				label={<Typography variant='h2'>{t('auth_page_signup_tab')}</Typography>}
-				disableRipple
-				classes={{
-					root: classes.tab,
-					selected: classes.activeTab,
-				}}
-				id='signup-tab'
+			<TabItem
+				active={activeTab === SIGN_UP_TAB}
+				title={t('auth_page_sign_up_tab')}
+				onTabClick={() => handleTabClick(SIGN_UP_TAB)}
 			/>
-		</Tabs>
+		</div>
 	);
 });

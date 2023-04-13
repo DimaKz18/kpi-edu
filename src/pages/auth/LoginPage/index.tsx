@@ -1,70 +1,105 @@
-import { ChangeEvent, useCallback, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { SubmitHandler, useForm } from 'react-hook-form';
 import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
-import { useAppDispatch } from '../../../store';
-import { fetchProfile } from '../../../service/profile';
-import { useStyles } from './styles';
-import { Grid, Typography } from '@mui/material';
-import { UserData, UserDataField } from './types';
-import { AuthLayout } from '../../../layout/AuthLayout';
-import { LOGIN_TAB } from '../../../layout/AuthLayout/helpers';
-import { InputFields } from './components/InputFields';
+import { useAppDispatch } from 'store';
+import { fetchProfile } from 'service/profile';
+import { UserData } from './types';
+import { LOGIN_TAB } from 'layout/AuthLayout/helpers';
+import { AuthLayout } from 'layout/AuthLayout';
+import { TextInputField } from 'common/components/TextInputField';
+import { PrimaryButton } from 'common/components/PrimaryButton';
+import styles from './styles.module.scss';
 
 export const LoginPage = () => {
-	const [userData, setUserData] = useState<UserData>({
-		email: '',
-		password: '',
-	});
-	const [loading, setLoading] = useState(false);
-	const [error, setError] = useState('');
+	const [showErrors, setShowErrors] = useState(false);
 
-	const classes = useStyles();
+	const {
+		register,
+		handleSubmit,
+		setError,
+		watch,
+		formState: { errors, isSubmitting },
+	} = useForm<UserData>({
+		defaultValues: {
+			email: '',
+			password: '',
+		},
+	});
+
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 
-	const handleLoginClick = useCallback(async () => {
-		setLoading(true);
+	const hasErrors = Object.values(errors).length > 0;
+	const disabled = hasErrors && showErrors;
 
-		try {
-			const { email, password } = userData;
-			const auth = getAuth();
-			const user = (await signInWithEmailAndPassword(auth, email, password)).user;
+	const inputs = useMemo(() => {
+		return [
+			{
+				placeholder: t('login_page_email_field_placeholder'),
+				register: register('email', {
+					shouldUnregister: true,
+				}),
+			},
+			{
+				placeholder: t('login_page_password_field_placeholder'),
+				type: 'password',
+				register: register('password', {
+					shouldUnregister: true,
+				}),
+			},
+		];
+	}, [register, t]);
 
-			if (user) {
-				dispatch(fetchProfile());
-			}
-		} catch (e) {
-			setError(t('login_page_error'));
-		}
-
-		setLoading(false);
-	}, [dispatch, userData]);
-
-	const handleUserDataChange = (
-		value: ChangeEvent<HTMLInputElement>,
-		field: UserDataField
-	) => {
-		setError('');
-		setUserData({
-			...userData,
-			[field]: value.target.value,
+	useEffect(() => {
+		// hide errors when user changed some input field
+		const subscription = watch(() => {
+			if (!showErrors) return;
+			setShowErrors(false);
 		});
-	};
+
+		return () => subscription.unsubscribe();
+	}, [showErrors, watch]);
+
+	// useEffect(() => {
+	// 	// set server error for old password
+	// 	if (!serverError) return;
+	// 	setError('oldPassword', { message: serverError });
+	// }, [serverError, setError]);
+
+	useEffect(() => {
+		// show errors after submitting form
+		if (hasErrors) setShowErrors(true);
+	}, [hasErrors, isSubmitting]);
+
+	const onSubmit: SubmitHandler<UserData> = useCallback((data) => {
+		// try {
+		// 	const { email, password } = data;
+		// 	const auth = getAuth();
+		// 	const user = (await signInWithEmailAndPassword(auth, email, password)).user;
+		// 	if (user) {
+		// 		dispatch(fetchProfile());
+		// 	}
+		// } catch (e) {
+		// 	setError(t('login_page_error'));
+		// }
+	}, []);
 
 	return (
-		<AuthLayout
-			activeTab={LOGIN_TAB}
-			buttonTitle={t('login_page_button')}
-			loading={loading}
-			error={error}
-			onClick={handleLoginClick}
-		>
-			<Grid container direction='column' className={classes.root}>
-				<InputFields userData={userData} onChange={handleUserDataChange} />
-				<Typography variant='body2' className={classes.forgotPassword}>
-					{t('login_page_forgot_password')}
-				</Typography>
-			</Grid>
+		<AuthLayout activeTab={LOGIN_TAB}>
+			<form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+				{inputs.map((input) => {
+					return <TextInputField key={input.placeholder} {...input} />;
+				})}
+				<p className={styles.forgotPasswordTitle}>
+					{t('login_page_forgot_password_title')}
+				</p>
+
+				{/* <div className={styles.errorContainer}>
+					{error && <p className={styles.error}>{error}</p>}
+				</div> */}
+				<PrimaryButton title={t('login_page_login_button')} loading={false} />
+			</form>
 		</AuthLayout>
 	);
 };

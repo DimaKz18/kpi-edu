@@ -1,0 +1,27 @@
+@use 'utils/variables';
+
+.button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-width: 136px;
+	height: 28px;
+	border-radius: 20px;
+	font-size: 14px;
+	font-weight: 500;
+	cursor: pointer;
+	border: none;
+	background-color: variables.$Blue;
+	color: variables.$White;
+}
+
+.disabledButton {
+	cursor: default;
+	background-color: variables.$DisabledBlue;
+}
+
+.hoveredButton {
+	&:hover {
+		// background-color: variables.$LightYellow;
+	}
+}

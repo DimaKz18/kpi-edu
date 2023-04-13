@@ -1,16 +1,13 @@
 import { memo } from 'react';
-import { useStyles } from './styles';
-import { Grid } from '@mui/material';
-import { DefaultAvatarIcon } from '../../../../common/icons/common';
 import { Tabs } from './components/Tabs';
+import { DefaultAvatarIcon } from 'common/icons/common';
+import styles from './styles.module.scss';
 
 export const NavBar = memo(() => {
-	const classes = useStyles();
-
 	return (
-		<Grid container justifyContent='flex-end' alignItems='center'>
+		<div className={styles.container}>
 			<Tabs />
-			<DefaultAvatarIcon className={classes.avatarIcon} />
-		</Grid>
+			<DefaultAvatarIcon className={styles.avatarIcon} />
+		</div>
 	);
 });

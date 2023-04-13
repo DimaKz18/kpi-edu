@@ -38,7 +38,7 @@ export const AuthProvider = ({ children }: Props) => {
 	useEffect(() => {
 		if (loading) return;
 		navigate(`${authId ? '/home' : '/login'}`);
-	}, [authId, loading, navigate]);
+	}, [authId, loading]);
 
 	return <AuthContext.Provider value={null}>{children}</AuthContext.Provider>;
 };

@@ -1,0 +1,26 @@
+@use 'utils/variables';
+
+.container {
+	position: relative;
+
+	.tab {
+		font-size: 20px;
+		font-weight: 700;
+		cursor: pointer;
+		color: variables.$DarkCyan;
+	}
+
+	.activeTab {
+		color: variables.$LightCyan;
+	}
+
+	.underline {
+		position: absolute;
+		bottom: -4px;
+		left: 0;
+		right: 0;
+		height: 2px;
+		border-radius: 20px;
+		background-color: variables.$LightCyan;
+	}
+}

@@ -1,0 +1,15 @@
+.container {
+	padding: 30px 16px;
+
+	.contentWrapper {
+		display: flex;
+		justify-content: space-around;
+		margin-top: 128px;
+
+		.formWrapper {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+	}
+}

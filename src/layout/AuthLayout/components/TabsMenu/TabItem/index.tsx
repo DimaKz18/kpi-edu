@@ -12,8 +12,11 @@ export const TabItem = memo(({ active, title, onTabClick }: Props) => {
 	const tabClass = clsx(styles.tab, active && styles.activeTab);
 
 	return (
-		<p className={tabClass} onClick={onTabClick}>
-			{title}
-		</p>
+		<div className={styles.container}>
+			<p className={tabClass} onClick={onTabClick}>
+				{title}
+			</p>
+			{active && <div className={styles.underline} />}
+		</div>
 	);
 });

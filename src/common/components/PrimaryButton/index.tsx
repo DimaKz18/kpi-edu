@@ -1,45 +1,36 @@
 import { memo } from 'react';
+import { ClipLoader } from 'react-spinners';
 import clsx from 'clsx';
-import { useStyles } from './styles';
-import { Button, ButtonProps } from '@mui/material';
-import { CentredCircularProgress } from '../CentredCircularProgress';
+import styles from './styles.module.scss';
 
-type Props = ButtonProps & {
-	variant: 'contained' | 'outlined' | 'text';
-	onClick?: () => void;
-	submitType?: boolean;
-	disabled?: boolean;
+// primary button component that used on desktop version.
+
+type Props = {
+	title: string;
 	loading?: boolean;
+	disabled?: boolean;
+	className?: string;
+	onClick?: () => void;
 };
 
 export const PrimaryButton = memo(
-	({
-		className,
-		variant,
-		children,
-		onClick,
-		submitType,
-		disabled,
-		id,
-		loading,
-		...others
-	}: Props) => {
-		const classes = useStyles();
+	({ title, loading, disabled, className, onClick }: Props) => {
+		const buttonType = disabled ? 'button' : 'submit';
+		const buttonClass = clsx(
+			styles.button,
+			disabled ? styles.disabledButton : styles.hoveredButton,
+			className
+		);
 
-		const rootClass = clsx(classes.root, className);
+		const handleClick = () => {
+			if (disabled || !onClick) return;
+			onClick();
+		};
 
 		return (
-			<Button
-				className={rootClass}
-				variant={variant}
-				onClick={onClick}
-				type={submitType ? 'submit' : 'button'}
-				disabled={disabled}
-				id={`button-${id}`}
-				{...others}
-			>
-				{!loading ? children : <CentredCircularProgress size={20} />}
-			</Button>
+			<button className={buttonClass} type={buttonType} onClick={handleClick}>
+				{loading ? <ClipLoader size={20} color='white' /> : title}
+			</button>
 		);
 	}
 );
