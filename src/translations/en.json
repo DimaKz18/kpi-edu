@@ -12,9 +12,15 @@
 	"login_page_error": "Invalid data",
 
 	"sign_up_page_first_name_field_placeholder": "first name",
+	"sign_up_page_first_name_error": "First name should not be longer than 20 characters",
 	"sign_up_page_last_name_field_placeholder": "last name",
+	"sign_up_page_last_name_error": "Last name should not be longer than 30 characters",
 	"sign_up_page_email_field_placeholder": "email",
+	"sign_up_page_email_pattern_error": "Please enter a valid email",
 	"sign_up_page_password_field_placeholder": "password",
+	"sign_up_page_password_pattern_error": "Password must be at least 8 characters long and contain at least one number",
+	"sign_up_page_password_match_error": "Passwords do not match",
 	"sign_up_page_confirm_password_field_placeholder": "confirm password",
+	"sign_up_page_is_creator_field_placeholder": "Creator",
 	"sign_up_page_sign_up_button": "Sign Up"
 }

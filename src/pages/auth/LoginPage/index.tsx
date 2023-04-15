@@ -97,11 +97,9 @@ export const LoginPage = () => {
 	return (
 		<AuthLayout activeTab={LOGIN_TAB}>
 			<form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
-				<div className={styles.inputsContainer}>
-					{inputs.map((input) => {
-						return <TextInputField key={input.placeholder} {...input} />;
-					})}
-				</div>
+				{inputs.map((input) => {
+					return <TextInputField key={input.placeholder} {...input} />;
+				})}
 				<p className={styles.forgotPasswordTitle}>
 					{t('login_page_forgot_password_title')}
 				</p>

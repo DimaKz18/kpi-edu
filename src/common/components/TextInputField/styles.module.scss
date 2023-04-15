@@ -1,7 +1,7 @@
 @use 'utils/variables';
 
 .container {
-	min-height: 70px;
+	min-height: 50px;
 
 	.input {
 		width: 100%;
@@ -21,8 +21,8 @@
 	}
 
 	.error {
-		margin-top: 8px;
-		font-size: 14px;
+		margin-top: 4px;
+		font-size: 10px;
 		color: variables.$DarkRed;
 	}
 }

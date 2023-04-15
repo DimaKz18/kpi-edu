@@ -3,16 +3,24 @@
 	"auth_page_sign_up_tab": "Зареєструватись",
 	"auth_page_ua_language_tab": "UA",
 	"auth_page_eng_language_tab": "ENG",
+	"auth_page_input_required_error": "Обов`язкове поле",
 
 	"login_page_email_field_placeholder": "пошта",
 	"login_page_password_field_placeholder": "пароль",
 	"login_page_forgot_password_title": "Забули пароль?",
 	"login_page_login_button": "Увійти",
+	"login_page_error": "Недійсні дані",
 
 	"sign_up_page_first_name_field_placeholder": "ім'я",
+	"sign_up_page_first_name_error": "Ім'я не повинно бути довшим за 20 символів",
 	"sign_up_page_last_name_field_placeholder": "прізвище",
+	"sign_up_page_last_name_error": "Прізвище не повинно бути довшим за 30 символів",
 	"sign_up_page_email_field_placeholder": "пошта",
+	"sign_up_page_email_pattern_error": "Введіть дійсну адресу електронної пошти",
 	"sign_up_page_password_field_placeholder": "пароль",
+	"sign_up_page_password_pattern_error": "Пароль має бути не менше 8 символів і містити принаймні одне число",
+	"sign_up_page_password_match_error": "Паролі не збігаються",
 	"sign_up_page_confirm_password_field_placeholder": "підтвердження паролю",
+	"sign_up_page_is_creator_field_placeholder": "Редактор",
 	"sign_up_page_sign_up_button": "Зареєструватись"
 }

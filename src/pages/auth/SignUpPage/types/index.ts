@@ -3,5 +3,6 @@ export type UserData = {
 	lastName: string;
 	email: string;
 	password: string;
-	repeatPassword: string;
+	confirmedPassword: string;
+	isCreator: boolean;
 };

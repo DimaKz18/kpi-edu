@@ -1,17 +1,40 @@
 @use 'utils/variables';
 
 .container {
-	margin-top: 30px;
+	width: 100%;
+	margin-top: 60px;
+
+	.checkboxContainer {
+		display: flex;
+		align-items: center;
+
+		.checkbox {
+			width: 16px;
+			height: 16px;
+			cursor: pointer;
+			accent-color: variables.$Blue;
+		}
+
+		.placeholder {
+			margin-left: 6px;
+			font-size: 14px;
+			color: variables.$Blue;
+		}
+	}
 
 	.errorContainer {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-height: 56px;
+		min-height: 36px;
 
 		.error {
 			font-size: 14px;
 			color: variables.$DarkRed;
 		}
+	}
+
+	.signUpButton {
+		margin: 0 auto;
 	}
 }
