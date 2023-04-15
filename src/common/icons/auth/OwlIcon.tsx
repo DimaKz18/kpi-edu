@@ -72,7 +72,7 @@ export const OwlIcon = memo(({ className }: Props) => {
 				fillRule='evenodd'
 				clipRule='evenodd'
 				d='M196.729 98.1847C184.397 101.504 170.886 111.671 163.471 123.21C159.757 128.991 153.736 143.796 153.897 146.751C153.927 147.31 156.219 145.191 158.988 142.041L164.026 136.315L170.227 140.416C179.585 146.604 187.049 145.645 192.612 137.539C196.378 132.053 196.266 127.32 192.162 118.518L188.831 111.373L192.527 108.116C194.56 106.324 198.556 102.977 201.406 100.677C206.984 96.1758 206.048 95.6765 196.729 98.1847ZM82.0534 109.216L86.0271 114.225L82.8141 118.572C78.9263 123.831 78.6931 129.307 82.2071 132.815C84.9604 135.564 91.8425 136.281 95.1884 134.168C96.5977 133.279 97.7087 133.884 99.4136 136.465L101.727 139.966L101.734 135.904C101.755 126.529 94.7521 113.978 85.9971 107.695C79.0903 102.738 77.4246 103.382 82.0534 109.216Z'
-				fill='url(#paint13_linear_42_1365)'
+				fill='url(#paint13_radial_42_1365)'
 			/>
 			<defs>
 				<linearGradient
@@ -83,8 +83,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='316.687'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint1_linear_42_1365'
@@ -94,8 +94,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='255.56'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint2_linear_42_1365'
@@ -105,8 +105,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='194.839'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint3_linear_42_1365'
@@ -116,8 +116,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='222.595'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint4_linear_42_1365'
@@ -127,8 +127,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='168.261'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint5_linear_42_1365'
@@ -138,8 +138,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='126.569'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint6_linear_42_1365'
@@ -149,8 +149,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='217.576'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint7_linear_42_1365'
@@ -160,8 +160,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='164.994'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint8_linear_42_1365'
@@ -171,8 +171,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='127.077'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint9_linear_42_1365'
@@ -182,8 +182,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='385.557'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint10_linear_42_1365'
@@ -193,8 +193,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='351.813'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint11_linear_42_1365'
@@ -204,8 +204,8 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='302.83'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#13315C' />
-					<stop offset='1' stopColor='#7DCFB6' />
+					<stop stopColor='#070707' />
+					<stop offset='1' stopColor='#94032E' />
 				</linearGradient>
 				<linearGradient
 					id='paint12_linear_42_1365'
@@ -215,22 +215,20 @@ export const OwlIcon = memo(({ className }: Props) => {
 					y2='388.74'
 					gradientUnits='userSpaceOnUse'
 				>
-					<stop stopColor='#0B2545' />
-					<stop offset='0.453125' stopColor='#00B2CA' />
-					<stop offset='1' stopColor='#FBD1A2' />
+					<stop stopColor='#94032E' />
+					<stop offset='1' stopColor='#070707' />
 				</linearGradient>
-				<linearGradient
-					id='paint13_linear_42_1365'
-					x1='53.7646'
-					y1='96.6814'
-					x2='222.453'
-					y2='133.44'
+				<radialGradient
+					id='paint13_radial_42_1365'
+					cx='0'
+					cy='0'
+					r='1'
 					gradientUnits='userSpaceOnUse'
+					gradientTransform='translate(135 97) rotate(91.0544) scale(81.5138 77.3554)'
 				>
-					<stop stopColor='#7DCFB6' />
-					<stop offset='0.380208' stopColor='#0B2545' />
-					<stop offset='1' stopColor='#00B2CA' />
-				</linearGradient>
+					<stop offset='0.21875' stopColor='#070707' />
+					<stop offset='0.802083' stopColor='#94032E' />
+				</radialGradient>
 			</defs>
 		</svg>
 	);

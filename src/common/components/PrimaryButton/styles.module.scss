@@ -13,15 +13,16 @@
 	border: none;
 	background-color: variables.$Blue;
 	color: variables.$White;
+	transition: background-color 0.2s;
 }
 
 .disabledButton {
 	cursor: default;
-	background-color: variables.$DisabledBlue;
+	background-color: variables.$DisabledGrey;
 }
 
 .hoveredButton {
 	&:hover {
-		// background-color: variables.$LightYellow;
+		background-color: variables.$LightBlue;
 	}
 }

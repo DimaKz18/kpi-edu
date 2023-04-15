@@ -3,8 +3,6 @@ import { ClipLoader } from 'react-spinners';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
 
-// primary button component that used on desktop version.
-
 type Props = {
 	title: string;
 	loading?: boolean;

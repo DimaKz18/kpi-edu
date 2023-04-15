@@ -3,10 +3,10 @@
 .tab {
 	font-size: 14px;
 	cursor: pointer;
-	color: variables.$DarkCyan;
+	color: variables.$Black;
 	transition: 0.2s;
 }
 
 .activeTab {
-	color: variables.$LightCyan;
+	color: variables.$Blue;
 }
