@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorResponse } from '../api';
-import { fetchProfile, logout } from './actions';
+import { fetchProfile } from './actions';
 import { Profile } from './models';
 
 export type ProfileState = {
@@ -39,24 +39,9 @@ const profileSlice = createSlice({
 			.addCase(fetchProfile.rejected, (state, action) => {
 				state.loadingProfile = false;
 				state.profileError = action.payload;
-			})
-
-			.addCase(logout.fulfilled, (state) => {
-				state.profile = undefined;
-				state.loadingProfile = false;
-				localStorage.removeItem('token');
-			})
-			.addCase(logout.pending, (state) => {
-				state.loadingProfile = true;
-				state.profileError = undefined;
-			})
-			.addCase(logout.rejected, (state, action) => {
-				state.loadingProfile = false;
-				state.profileError = action.payload;
 			});
 	},
 });
 
 export const { setProfile, setLoadingProfile } = profileSlice.actions;
-
-export default profileSlice.reducer;
+export const profileReducer = profileSlice.reducer;

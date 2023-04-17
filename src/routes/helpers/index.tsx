@@ -1,27 +1,28 @@
 import { Navigate } from 'react-router-dom';
-import { LoginPage } from '../../pages/auth/LoginPage';
-import { SignUpPage } from '../../pages/auth/SignUpPage';
-import { HomePage } from '../../pages/community/HomePage';
 import { RouteItem } from '../types';
+import { rootRoute, loginRoute, signUpRoute, exploreRoute } from 'routes/routes';
+import { LoginPage } from 'pages/auth/LoginPage';
+import { SignUpPage } from 'pages/auth/SignUpPage';
+import { ExplorePage } from 'pages/community/ExplorePage';
 
 export const PUBLIC_ROUTES: Array<RouteItem> = [
 	{
-		path: '/',
-		element: <Navigate to='/login' />,
+		path: rootRoute,
+		element: <Navigate to={loginRoute} />,
 	},
 	{
-		path: '/login',
+		path: loginRoute,
 		element: <LoginPage />,
 	},
 	{
-		path: '/signup',
+		path: signUpRoute,
 		element: <SignUpPage />,
 	},
 ];
 
 export const PROTECTED_ROUTES: Array<RouteItem> = [
 	{
-		path: '/home',
-		element: <HomePage />,
+		path: exploreRoute,
+		element: <ExplorePage />,
 	},
 ];

@@ -1,7 +1,7 @@
 import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { login, signUp } from 'routes/routes';
+import { loginRoute, signUpRoute } from 'routes/routes';
 import { LOGIN_TAB, SIGN_UP_TAB } from '../../helpers';
 import { TabItem } from './TabItem';
 import styles from './styles.module.scss';
@@ -16,7 +16,7 @@ export const TabsMenu = memo(({ activeTab }: Props) => {
 
 	const handleTabClick = useCallback(
 		(tab: number) => {
-			const currentPage = tab === LOGIN_TAB ? login : signUp;
+			const currentPage = tab === LOGIN_TAB ? loginRoute : signUpRoute;
 			navigate(currentPage, { replace: true });
 		},
 		[navigate]

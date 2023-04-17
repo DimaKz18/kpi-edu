@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { ProtectedRoute } from './components/ProtectedRoute';
+import { ProtectedRoute } from './ProtectedRoute';
 import { PUBLIC_ROUTES, PROTECTED_ROUTES } from './helpers';
 
 export const AppRoutes = () => {

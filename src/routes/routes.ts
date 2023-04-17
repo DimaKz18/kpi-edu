@@ -1,4 +1,6 @@
-export const root = '/';
+export const rootRoute = '/';
 
-export const login = '/login';
-export const signUp = '/signup';
+export const loginRoute = '/login';
+export const signUpRoute = '/signup';
+
+export const exploreRoute = '/explore'

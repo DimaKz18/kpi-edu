@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
 import { useAppDispatch } from 'store';
 import { fetchProfile } from 'service/profile';
+import { useAuth } from 'hooks';
 import { UserData } from './types';
 import { LOGIN_TAB } from 'layout/AuthLayout/helpers';
 import { AuthLayout } from 'layout/AuthLayout';
@@ -13,7 +13,6 @@ import styles from './styles.module.scss';
 
 export const LoginPage = () => {
 	const [showErrors, setShowErrors] = useState(false);
-	const [serverError, setServerError] = useState('');
 
 	const {
 		register,
@@ -30,6 +29,7 @@ export const LoginPage = () => {
 
 	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
+	const { login, clearServerError, user, loading, serverError } = useAuth(t);
 
 	const hasErrors = Object.values(errors).length > 0;
 	const disabled = hasErrors && showErrors;
@@ -61,11 +61,11 @@ export const LoginPage = () => {
 		const subscription = watch(() => {
 			if (!showErrors) return;
 			setShowErrors(false);
-			setServerError('');
+			clearServerError();
 		});
 
 		return () => subscription.unsubscribe();
-	}, [showErrors, watch]);
+	}, [clearServerError, showErrors, watch]);
 
 	useEffect(() => {
 		// set server error
@@ -80,18 +80,11 @@ export const LoginPage = () => {
 
 	const onSubmit: SubmitHandler<UserData> = useCallback(
 		async (data) => {
-			try {
-				const { email, password } = data;
-				const auth = getAuth();
-				const user = (await signInWithEmailAndPassword(auth, email, password)).user;
-				if (user) {
-					dispatch(fetchProfile());
-				}
-			} catch (e) {
-				setServerError(t('login_page_error'));
-			}
+			const { email, password } = data;
+			await login(email, password);
+			if (user) dispatch(fetchProfile());
 		},
-		[dispatch, t]
+		[dispatch, login, user]
 	);
 
 	return (
@@ -108,7 +101,7 @@ export const LoginPage = () => {
 				</div>
 				<PrimaryButton
 					title={t('login_page_login_button')}
-					loading={false}
+					loading={loading}
 					disabled={disabled}
 					className={styles.loginButton}
 				/>

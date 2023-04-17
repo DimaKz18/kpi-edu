@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { useAppDispatch } from 'store';
-import { register } from 'service/profile';
 import { UserData } from './types';
 import { emailPattern, passwordPattern } from 'utils/regex';
 import { MAX_FIRST_NAME_LENGTH, MAX_LAST_NAME_LENGTH } from './helpers';

@@ -19,5 +19,4 @@ const appSlice = createSlice({
 });
 
 export const { setAppLanguage } = appSlice.actions;
-
-export default appSlice.reducer;
+export const appReducer = appSlice.reducer;
