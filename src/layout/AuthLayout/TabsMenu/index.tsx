@@ -2,7 +2,7 @@ import { memo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import { loginRoute, signUpRoute } from 'routes/routes';
-import { LOGIN_TAB, SIGN_UP_TAB } from '../../helpers';
+import { LOGIN_TAB, SIGN_UP_TAB } from '../helpers';
 import { TabItem } from './TabItem';
 import styles from './styles.module.scss';
 

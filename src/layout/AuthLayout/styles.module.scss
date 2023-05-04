@@ -1,15 +1,12 @@
 .container {
-	padding: 30px 16px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	height: 100%;
 
-	.contentWrapper {
+	.formWrapper {
 		display: flex;
-		justify-content: space-around;
-		margin-top: 100px;
-
-		.formWrapper {
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-		}
+		flex-direction: column;
+		align-items: center;
 	}
 }

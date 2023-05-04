@@ -6,6 +6,7 @@ import { fetchProfile } from 'service/profile';
 import { useAuth } from 'hooks';
 import { UserData } from './types';
 import { LOGIN_TAB } from 'layout/AuthLayout/helpers';
+import { NavigationLayout } from 'layout/NavigationLayout';
 import { AuthLayout } from 'layout/AuthLayout';
 import { TextInputField } from 'common/components/TextInputField';
 import { PrimaryButton } from 'common/components/PrimaryButton';
@@ -88,24 +89,26 @@ export const LoginPage = () => {
 	);
 
 	return (
-		<AuthLayout activeTab={LOGIN_TAB}>
-			<form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
-				{inputs.map((input) => {
-					return <TextInputField key={input.placeholder} {...input} />;
-				})}
-				<p className={styles.forgotPasswordTitle}>
-					{t('login_page_forgot_password_title')}
-				</p>
-				<div className={styles.errorContainer}>
-					{serverError && <p className={styles.error}>{serverError}</p>}
-				</div>
-				<PrimaryButton
-					title={t('login_page_login_button')}
-					loading={loading}
-					disabled={disabled}
-					className={styles.loginButton}
-				/>
-			</form>
-		</AuthLayout>
+		<NavigationLayout>
+			<AuthLayout activeTab={LOGIN_TAB}>
+				<form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+					{inputs.map((input) => {
+						return <TextInputField key={input.placeholder} {...input} />;
+					})}
+					<p className={styles.forgotPasswordTitle}>
+						{t('login_page_forgot_password_title')}
+					</p>
+					<div className={styles.errorContainer}>
+						{serverError && <p className={styles.error}>{serverError}</p>}
+					</div>
+					<PrimaryButton
+						title={t('login_page_login_button')}
+						loading={loading}
+						disabled={disabled}
+						className={styles.loginButton}
+					/>
+				</form>
+			</AuthLayout>
+		</NavigationLayout>
 	);
 };

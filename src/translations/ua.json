@@ -1,8 +1,13 @@
 {
+	"navigation_layout_app_title": "Actual Press",
+	"navigation_layout_explore_navigation_tab_title": "Головна",
+	"navigation_layout_bookmarks_navigation_tab_title": "Збережені",
+	"navigation_layout_profile_navigation_tab_title": "Профіль",
+	"navigation_layout_ua_language_tab": "Укр",
+	"navigation_layout_en_language_tab": "Англ",
+
 	"auth_page_login_tab": "Увійти",
 	"auth_page_sign_up_tab": "Зареєструватись",
-	"auth_page_ua_language_tab": "UA",
-	"auth_page_eng_language_tab": "ENG",
 	"auth_page_input_required_error": "Обов`язкове поле",
 
 	"login_page_email_field_placeholder": "пошта",

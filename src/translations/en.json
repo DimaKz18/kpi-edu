@@ -1,8 +1,13 @@
 {
+	"navigation_layout_app_title": "Actual Press",
+	"navigation_layout_explore_navigation_tab_title": "Explore",
+	"navigation_layout_bookmarks_navigation_tab_title": "Bookmarks",
+	"navigation_layout_profile_navigation_tab_title": "Profile",
+	"navigation_layout_ua_language_tab": "UA",
+	"navigation_layout_en_language_tab": "EN",
+	
 	"auth_page_login_tab": "Log In",
 	"auth_page_sign_up_tab": "Sign Up",
-	"auth_page_ua_language_tab": "UA",
-	"auth_page_eng_language_tab": "ENG",
 	"auth_page_input_required_error": "Required",
 
 	"login_page_email_field_placeholder": "email",

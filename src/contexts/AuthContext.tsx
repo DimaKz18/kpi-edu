@@ -1,6 +1,6 @@
 import { createContext, useEffect } from 'react';
 import { getAuth } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store';
 import {
 	fetchProfile,
@@ -17,13 +17,19 @@ type Props = {
 export const AuthProvider = ({ children }: Props) => {
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
+	const location = useLocation();
 	const authId = useIsAuthenticated();
 	const loadingProfile = useAppSelector(selectLoadingProfile);
 
+	const pathname = location.pathname;
+	const isLoginPage = pathname === loginRoute;
+	const isSignUpPage = pathname === signUpRoute;
 	const localToken = localStorage.getItem('token');
+
 	const redirectToLoginPage =
-		(!localToken || (!loadingProfile && !authId)) && !signUpRoute;
-	const redirectToExplorePage = !loadingProfile && authId && (loginRoute || signUpRoute);
+		(!localToken || (!loadingProfile && !authId)) && !isSignUpPage;
+	const redirectToExplorePage =
+		!loadingProfile && authId && (isLoginPage || isSignUpPage);
 
 	const auth = getAuth();
 	const AuthContext = createContext(null);
@@ -43,8 +49,8 @@ export const AuthProvider = ({ children }: Props) => {
 	});
 
 	useEffect(() => {
-		if (redirectToLoginPage) navigate(loginRoute);
-		if (redirectToExplorePage) navigate(exploreRoute);
+		if (redirectToLoginPage) navigate(loginRoute, { replace: true });
+		if (redirectToExplorePage) navigate(exploreRoute, { replace: true });
 	}, [navigate, redirectToExplorePage, redirectToLoginPage]);
 
 	return <AuthContext.Provider value={null}>{children}</AuthContext.Provider>;

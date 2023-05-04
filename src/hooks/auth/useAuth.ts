@@ -15,6 +15,7 @@ export const useAuth = (t: TFunction) => {
 
 			try {
 				const user = (await signInWithEmailAndPassword(auth, email, password)).user;
+				
 				if (user) {
 					setUser(user);
 				} else {

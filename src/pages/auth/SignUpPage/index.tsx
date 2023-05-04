@@ -6,6 +6,7 @@ import { UserData } from './types';
 import { emailPattern, passwordPattern } from 'utils/regex';
 import { MAX_FIRST_NAME_LENGTH, MAX_LAST_NAME_LENGTH } from './helpers';
 import { SIGN_UP_TAB } from 'layout/AuthLayout/helpers';
+import { NavigationLayout } from 'layout/NavigationLayout';
 import { AuthLayout } from 'layout/AuthLayout';
 import { TextInputField } from 'common/components/TextInputField';
 import { PrimaryButton } from 'common/components/PrimaryButton';
@@ -144,27 +145,33 @@ export const SignUpPage = () => {
 	const onSubmit: SubmitHandler<UserData> = useCallback((data) => {}, []);
 
 	return (
-		<AuthLayout activeTab={SIGN_UP_TAB}>
-			<form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
-				{inputs.map((input) => {
-					return <TextInputField key={input.placeholder} {...input} />;
-				})}
-				<div className={styles.checkboxContainer}>
-					<input type='checkbox' {...register('isCreator')} className={styles.checkbox} />
-					<p className={styles.placeholder}>
-						{t('sign_up_page_is_creator_field_placeholder')}
-					</p>
-				</div>
-				<div className={styles.errorContainer}>
-					{serverError && <p className={styles.error}>{serverError}</p>}
-				</div>
-				<PrimaryButton
-					title={t('sign_up_page_sign_up_button')}
-					loading={false}
-					disabled={disabled}
-					className={styles.signUpButton}
-				/>
-			</form>
-		</AuthLayout>
+		<NavigationLayout>
+			<AuthLayout activeTab={SIGN_UP_TAB}>
+				<form className={styles.container} onSubmit={handleSubmit(onSubmit)}>
+					{inputs.map((input) => {
+						return <TextInputField key={input.placeholder} {...input} />;
+					})}
+					<div className={styles.checkboxContainer}>
+						<input
+							type='checkbox'
+							{...register('isCreator')}
+							className={styles.checkbox}
+						/>
+						<p className={styles.placeholder}>
+							{t('sign_up_page_is_creator_field_placeholder')}
+						</p>
+					</div>
+					<div className={styles.errorContainer}>
+						{serverError && <p className={styles.error}>{serverError}</p>}
+					</div>
+					<PrimaryButton
+						title={t('sign_up_page_sign_up_button')}
+						loading={false}
+						disabled={disabled}
+						className={styles.signUpButton}
+					/>
+				</form>
+			</AuthLayout>
+		</NavigationLayout>
 	);
 };

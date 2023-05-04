@@ -2,19 +2,21 @@ import { memo } from 'react';
 
 type Props = {
 	className?: string;
+	onClick?: () => void;
 };
 
-export const DefaultAvatarIcon = memo(({ className }: Props) => {
+export const DefaultAvatarIcon = memo(({ className, onClick }: Props) => {
 	return (
 		<svg
 			className={className}
+			onClick={onClick}
 			width='40'
 			height='40'
 			viewBox='0 0 40 40'
 			fill='none'
 			xmlns='http://www.w3.org/2000/svg'
 		>
-			<rect width='40' height='40' rx='20' fill='#205295' />
+			<rect width='40' height='40' rx='20' fill='#94032e' />
 			<path
 				d='M20 22.6667C22.9455 22.6667 25.3333 20.2789 25.3333 17.3333C25.3333 14.3878 22.9455 12 20 12C17.0545 12 14.6667 14.3878 14.6667 17.3333C14.6667 20.2789 17.0545 22.6667 20 22.6667Z'
 				stroke='#ffffff'

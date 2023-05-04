@@ -1,7 +1,5 @@
-import { LogoIcon } from 'common/icons/common';
 import { OwlIcon } from 'common/icons/auth';
-import { NavBar } from './components/NavBar';
-import { TabsMenu } from './components/TabsMenu';
+import { TabsMenu } from './TabsMenu';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -12,15 +10,11 @@ type Props = {
 export const AuthLayout = ({ activeTab, children }: Props) => {
 	return (
 		<div className={styles.container}>
-			<NavBar />
-			<div className={styles.contentWrapper}>
-				<div className={styles.formWrapper}>
-					<LogoIcon />
-					<TabsMenu activeTab={activeTab} />
-					{children}
-				</div>
-				<OwlIcon />
+			<div className={styles.formWrapper}>
+				<TabsMenu activeTab={activeTab} />
+				{children}
 			</div>
+			<OwlIcon />
 		</div>
 	);
 };

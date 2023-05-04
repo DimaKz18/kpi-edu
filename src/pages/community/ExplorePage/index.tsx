@@ -1,4 +1,5 @@
 import { getAuth } from '@firebase/auth';
+import { NavigationLayout } from 'layout/NavigationLayout';
 import { setProfile } from 'service/profile';
 import { useAppDispatch } from 'store';
 
@@ -12,8 +13,8 @@ export const ExplorePage = () => {
 	};
 
 	return (
-		<div>
+		<NavigationLayout>
 			<button onClick={onLogoutClick}>Logout</button>
-		</div>
+		</NavigationLayout>
 	);
 };
