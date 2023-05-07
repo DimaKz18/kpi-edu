@@ -5,6 +5,8 @@
 	"navigation_layout_profile_navigation_tab_title": "Profile",
 	"navigation_layout_ua_language_tab": "UA",
 	"navigation_layout_en_language_tab": "EN",
+
+	"search_input_placeholder": "Search",
 	
 	"auth_page_login_tab": "Log In",
 	"auth_page_sign_up_tab": "Sign Up",
@@ -27,5 +29,7 @@
 	"sign_up_page_password_match_error": "Passwords do not match",
 	"sign_up_page_confirm_password_field_placeholder": "confirm password",
 	"sign_up_page_is_creator_field_placeholder": "Creator",
-	"sign_up_page_sign_up_button": "Sign Up"
+	"sign_up_page_sign_up_button": "Sign Up",
+
+	"explore_page_no_result_title": "Nothing was found for the given parameters"
 }

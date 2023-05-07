@@ -6,6 +6,8 @@
 	"navigation_layout_ua_language_tab": "Укр",
 	"navigation_layout_en_language_tab": "Англ",
 
+	"search_input_placeholder": "Пошук",
+
 	"auth_page_login_tab": "Увійти",
 	"auth_page_sign_up_tab": "Зареєструватись",
 	"auth_page_input_required_error": "Обов`язкове поле",
@@ -27,5 +29,7 @@
 	"sign_up_page_password_match_error": "Паролі не збігаються",
 	"sign_up_page_confirm_password_field_placeholder": "підтвердження паролю",
 	"sign_up_page_is_creator_field_placeholder": "Редактор",
-	"sign_up_page_sign_up_button": "Зареєструватись"
+	"sign_up_page_sign_up_button": "Зареєструватись",
+
+	"explore_page_no_result_title": "Для вказаних параметрів нічого не знайдено"
 }
