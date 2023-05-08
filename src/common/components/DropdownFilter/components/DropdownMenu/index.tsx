@@ -1,5 +1,6 @@
 import { memo, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useOnClickOutside } from 'hooks';
 import { FilterType } from '../../types';
 import { DropdownMenuItem } from '../DropdownMenuItem';
@@ -9,14 +10,23 @@ type Props = {
 	show: boolean;
 	filters: FilterType[];
 	selectedFilter: string;
-	onFilterClick: (filter: string) => void;
+	onFilterClick: (filter?: string) => void;
+	onRemoveFilterClick: () => void;
 	onClickOutside: (event: Event) => void;
 };
 
 export const DropdownMenu = memo(
-	({ show, filters, selectedFilter, onFilterClick, onClickOutside }: Props) => {
+	({
+		show,
+		filters,
+		selectedFilter,
+		onFilterClick,
+		onRemoveFilterClick,
+		onClickOutside,
+	}: Props) => {
 		const containerRef = useRef<HTMLDivElement | null>(null);
 
+		const { t } = useTranslation();
 		useOnClickOutside(containerRef, onClickOutside);
 
 		const animationVariants = {
@@ -58,6 +68,9 @@ export const DropdownMenu = memo(
 						/>
 					);
 				})}
+				<div className={styles.removeFilterContainer} onClick={onRemoveFilterClick}>
+					<p className={styles.removeButtonTitle}>{t('media_remove_filter_title')}</p>
+				</div>
 			</motion.div>
 		);
 	}

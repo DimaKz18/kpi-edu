@@ -1,1 +1,1 @@
-export type MediaType = 'Agency' | 'Magazine' | 'Newspaper' | 'Online media';
+export type MediaType = 'agency' | 'magazine' | 'newspaper' | 'online';

@@ -1,7 +1,6 @@
 import { memo, useCallback, useRef, useState } from 'react';
 import { FilterType } from './types';
-import { CloseArrowIcon } from 'common/icons/common/CloseArrowIcon';
-import { OpenArrowIcon } from 'common/icons/common/OpenArrowIcon';
+import { OpenArrowIcon, CloseArrowIcon } from 'common/icons/common';
 import { DropdownMenu } from './components/DropdownMenu';
 import styles from './styles.module.scss';
 
@@ -9,7 +8,7 @@ type Props = {
 	filters: FilterType[];
 	selectedFilter: string;
 	filterTitle: string;
-	onFilterClick: (filter: string) => void;
+	onFilterClick: (filter?: string) => void;
 };
 
 export const DropdownFilter = memo(
@@ -28,13 +27,19 @@ export const DropdownFilter = memo(
 		}, []);
 
 		const handleFilterClick = useCallback(
-			(filter: string) => {
+			(filter?: string) => {
 				if (filter === selectedFilter) return;
 				onFilterClick(filter);
 				setTimeout(() => handleCloseDropdownMenu(), 100); // to close drop down menu with small delay
 			},
 			[handleCloseDropdownMenu, onFilterClick, selectedFilter]
 		);
+
+		const handleRemoveFilterClick = useCallback(() => {
+			if (!selectedFilter) return;
+			onFilterClick();
+			setTimeout(() => handleCloseDropdownMenu(), 100); // to close drop down menu with small delay
+		}, [handleCloseDropdownMenu, onFilterClick, selectedFilter]);
 
 		return (
 			<div className={styles.container}>
@@ -43,7 +48,7 @@ export const DropdownFilter = memo(
 					ref={selectedFilterRef}
 					onClick={onToggleDropdownMenu}
 				>
-					<p>{filterTitle}</p>
+					<p className={styles.filterTitle}>{selectedFilter || filterTitle}</p>
 					{showDropdownMenu ? <CloseArrowIcon /> : <OpenArrowIcon />}
 				</div>
 				<DropdownMenu
@@ -51,6 +56,7 @@ export const DropdownFilter = memo(
 					filters={filters}
 					selectedFilter={selectedFilter}
 					onFilterClick={handleFilterClick}
+					onRemoveFilterClick={handleRemoveFilterClick}
 					onClickOutside={handleCloseDropdownMenu}
 				/>
 			</div>

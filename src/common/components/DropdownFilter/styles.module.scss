@@ -12,12 +12,19 @@
 		width: 100%;
 		padding: 10px;
 		border-radius: 4px;
-		background-color: variables.$LightBlue;
+		background-color: variables.$Blue;
 		transition: background-color 0.3s;
 		cursor: pointer;
 
 		&:hover {
-			background-color: variables.$Blue;
+			background-color: variables.$LightBlue;
+		}
+
+		.filterTitle {
+			font-size: 16px;
+			font-weight: 600;
+			text-transform: capitalize;
+			color: variables.$White;
 		}
 	}
 }

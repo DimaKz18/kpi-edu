@@ -31,8 +31,8 @@ export const MediaList = memo(({ medias, loadingMedias }: Props) => {
 									}
 									title={'Ukrinform'}
 									specialization={'politics'}
-									type={'Online media'}
-									region={'Kyiv region'}
+									type={'online'}
+									region={'kyiv'}
 								/>
 							);
 						})}

@@ -22,8 +22,9 @@
 	"media_kyiv_region_filter_title": "Kyiv region",
 	"media_zhytomyr_region_filter_title": "Zhytomyr region",
 	"media_lviv_region_filter_title": "Lviv region",
-	"media_odessa_region_filter_title": "Odesa region",
+	"media_odesa_region_filter_title": "Odesa region",
 	"media_poltava_region_filter_title": "Poltava region",
+	"media_remove_filter_title": "Remove filter",
 
 	"auth_page_login_tab": "Log In",
 	"auth_page_sign_up_tab": "Sign Up",
