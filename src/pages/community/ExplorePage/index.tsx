@@ -1,5 +1,6 @@
-import { ChangeEvent, useCallback } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
 import { useFetchMediasQuery } from 'service/media';
+import { MediaFilters, MediaFilterKey } from './types';
 import { useDebounceValue, useSearch } from 'hooks';
 import { NavigationLayout } from 'layout/NavigationLayout';
 import { SearchInput } from 'common/components/SearcInput';
@@ -8,6 +9,13 @@ import { MediaList } from './components/MediaList';
 import styles from './styles.module.scss';
 
 export const ExplorePage = () => {
+	const [mediaFilters, setMediaFilters] = useState<MediaFilters>({
+		specialization: '',
+		type: '',
+		region: '',
+		rate: 0,
+	});
+
 	const { search, handleSearchChange } = useSearch();
 	const debouncedSearch = useDebounceValue(search.trim(), 300);
 
@@ -26,11 +34,27 @@ export const ExplorePage = () => {
 		[handleSearchChange]
 	);
 
+	const handleMediaFilterClick = useCallback(
+		(filterKey: MediaFilterKey, value: string) => {
+			setMediaFilters({
+				...mediaFilters,
+				[filterKey]: value,
+			});
+		},
+		[mediaFilters]
+	);
+
 	return (
 		<NavigationLayout>
 			<div className={styles.container}>
 				<SearchInput value={search} onChange={onChange} />
-				<Filters />
+				<Filters
+					selectedSpecializationFilter={mediaFilters.specialization}
+					selectedTypeFilter={mediaFilters.type}
+					selectedRegionFilter={mediaFilters.region}
+					selectedRateFilter={mediaFilters.rate}
+					onMediaFilterClick={handleMediaFilterClick}
+				/>
 				<MediaList medias={medias || []} loadingMedias={loadingMedias} />
 			</div>
 		</NavigationLayout>

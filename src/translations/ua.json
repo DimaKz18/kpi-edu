@@ -8,6 +8,23 @@
 
 	"search_input_placeholder": "Пошук",
 
+	"media_specialization_filter_title": "Спеціалізація",
+	"media_sport_specialization_filter_title": "Спорт",
+	"media_politics_specialization_filter_title": "Політика",
+	"media_culture_specialization_filter_title": "Культура",
+	"media_general_specialization_filter_title": "Загальне",
+	"media_type_filter_title": "Тип",
+	"media_agency_type_filter_title": "Агенція",
+	"media_magazine_type_filter_title": "Журнал",
+	"media_newspaper_type_filter_title": "Газета",
+	"media_online_specialization_filter_title": "Онлайн ЗМІ",
+	"media_region_filter_title": "Регіон",
+	"media_kyiv_region_filter_title": "Київська область",
+	"media_zhytomyr_region_filter_title": "Житомирська область",
+	"media_lviv_region_filter_title": "Львівска область",
+	"media_odessa_region_filter_title": "Одеська область",
+	"media_poltava_region_filter_title": "Полтавська область",
+
 	"auth_page_login_tab": "Увійти",
 	"auth_page_sign_up_tab": "Зареєструватись",
 	"auth_page_input_required_error": "Обов`язкове поле",

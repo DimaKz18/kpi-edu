@@ -1,0 +1,25 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 40px;
+	width: 100%;
+	padding: 12px;
+	color: variables.$White;
+	cursor: pointer;
+
+	&:not(:first-child) {
+		border-top: 0.5px solid variables.$White;
+	}
+
+	.title {
+		font-size: 14px;
+	}
+}
+
+.selectedContainer {
+	color: variables.$LightBlue;
+	background-color: variables.$White;
+}

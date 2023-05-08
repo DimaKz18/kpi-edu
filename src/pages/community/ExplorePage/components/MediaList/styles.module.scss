@@ -3,7 +3,7 @@
 .container {
 	text-align: center;
 	width: 100%;
-	padding: 40px 20px;
+	padding: 20px;
 
 	.mediaListContainer {
 		display: grid;
@@ -16,9 +16,5 @@
 		font-size: 16px;
 		font-weight: 500;
 		color: variables.$Blue;
-	}
-
-	.loader {
-		margin-top: 20px;
 	}
 }

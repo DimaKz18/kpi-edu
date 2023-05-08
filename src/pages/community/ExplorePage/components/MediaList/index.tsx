@@ -30,7 +30,7 @@ export const MediaList = memo(({ medias, loadingMedias }: Props) => {
 										'https://prm.ua/wp-content/uploads/2020/06/Znimok-ekrana-2020-06-16-o-20.53.38.png'
 									}
 									title={'Ukrinform'}
-									specialization={'Politics'}
+									specialization={'politics'}
 									type={'Online media'}
 									region={'Kyiv region'}
 								/>
@@ -42,7 +42,7 @@ export const MediaList = memo(({ medias, loadingMedias }: Props) => {
 			{showNoResultText && (
 				<p className={styles.noResultTitle}>{t('explore_page_no_result_title')}</p>
 			)}
-			<Loader show={loadingMedias} containerClassName={styles.loader} />
+			<Loader show={loadingMedias} />
 		</div>
 	);
 });

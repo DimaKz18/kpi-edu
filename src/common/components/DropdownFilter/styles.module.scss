@@ -1,0 +1,23 @@
+@use 'utils/variables';
+
+.container {
+	position: relative;
+	width: 160px;
+
+	.selectedFilterContainer {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		height: 40px;
+		width: 100%;
+		padding: 10px;
+		border-radius: 4px;
+		background-color: variables.$LightBlue;
+		transition: background-color 0.3s;
+		cursor: pointer;
+
+		&:hover {
+			background-color: variables.$Blue;
+		}
+	}
+}

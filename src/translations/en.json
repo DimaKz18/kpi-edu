@@ -7,7 +7,24 @@
 	"navigation_layout_en_language_tab": "EN",
 
 	"search_input_placeholder": "Search",
-	
+
+	"media_specialization_filter_title": "Specialization",
+	"media_sport_specialization_filter_title": "Sport",
+	"media_politics_specialization_filter_title": "Politics",
+	"media_culture_specialization_filter_title": "Culture",
+	"media_general_specialization_filter_title": "General",
+	"media_type_filter_title": "Type",
+	"media_agency_type_filter_title": "Agency",
+	"media_magazine_type_filter_title": "Magazine",
+	"media_newspaper_type_filter_title": "Newspaper",
+	"media_online_specialization_filter_title": "Online media",
+	"media_region_filter_title": "Region",
+	"media_kyiv_region_filter_title": "Kyiv region",
+	"media_zhytomyr_region_filter_title": "Zhytomyr region",
+	"media_lviv_region_filter_title": "Lviv region",
+	"media_odessa_region_filter_title": "Odesa region",
+	"media_poltava_region_filter_title": "Poltava region",
+
 	"auth_page_login_tab": "Log In",
 	"auth_page_sign_up_tab": "Sign Up",
 	"auth_page_input_required_error": "Required",
