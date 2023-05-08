@@ -35,7 +35,7 @@ export const ExplorePage = () => {
 	);
 
 	const handleMediaFilterClick = useCallback(
-		(filterKey: MediaFilterKey, value: string) => {
+		(filterKey: MediaFilterKey, value: string | number) => {
 			setMediaFilters({
 				...mediaFilters,
 				[filterKey]: value,

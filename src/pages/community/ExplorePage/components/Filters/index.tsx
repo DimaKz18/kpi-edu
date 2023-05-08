@@ -1,4 +1,3 @@
-import { DropdownFilter } from 'common/components/DropdownFilter';
 import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MediaFilterKey } from '../../types';
@@ -17,6 +16,8 @@ import {
 	ODESA_REGION_FILTER,
 	POLTAVA_REGION_FILTER,
 } from './helpers';
+import { DropdownFilter } from 'common/components/DropdownFilter';
+import { RateFilter } from 'common/components/RateFilter';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -24,7 +25,7 @@ type Props = {
 	selectedTypeFilter: string;
 	selectedRegionFilter: string;
 	selectedRateFilter: number;
-	onMediaFilterClick: (filterKey: MediaFilterKey, value: string) => void;
+	onMediaFilterClick: (filterKey: MediaFilterKey, value: string | number) => void;
 };
 
 export const Filters = memo(
@@ -125,6 +126,13 @@ export const Filters = memo(
 			[onMediaFilterClick]
 		);
 
+		const handleRateFilterClick = useCallback(
+			(filter: number) => {
+				onMediaFilterClick('rate', filter);
+			},
+			[onMediaFilterClick]
+		);
+
 		return (
 			<div className={styles.container}>
 				<DropdownFilter
@@ -144,6 +152,10 @@ export const Filters = memo(
 					selectedFilter={selectedRegionFilter}
 					filterTitle={t('media_region_filter_title')}
 					onFilterClick={handleRegionFilterClick}
+				/>
+				<RateFilter
+					selectedFilter={selectedRateFilter}
+					onFilterClick={handleRateFilterClick}
 				/>
 			</div>
 		);
