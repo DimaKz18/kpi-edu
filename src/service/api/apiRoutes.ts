@@ -1,2 +1,2 @@
-export const getRegisterRoute = () => '/session/register';
+export const getRegisterRoute = () => '/register';
 export const getProfileRoute = () => '/profile';

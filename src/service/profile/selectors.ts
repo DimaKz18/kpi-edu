@@ -17,3 +17,8 @@ export const selectProfileError = createSelector(
 	[getProfileState],
 	(profileState) => profileState.profileError
 );
+
+export const selectProfileRegistered = createSelector(
+	[getProfileState],
+	(profileState) => profileState.profileRegistered
+);

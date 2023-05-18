@@ -1,13 +1,16 @@
 import { useCallback, useState } from 'react';
 import { TFunction } from 'react-i18next';
-import { getAuth, signInWithEmailAndPassword, User } from '@firebase/auth';
+import { getAuth, signInWithEmailAndPassword } from '@firebase/auth';
+import { RegisterDto } from 'service/profile/dtos';
+import { useAppDispatch } from 'store';
+import { fetchProfile, registerProfile } from 'service/profile';
 
 export const useAuth = (t: TFunction) => {
 	const [loading, setLoading] = useState(false);
 	const [serverError, setServerError] = useState('');
-	const [user, setUser] = useState<User | null>(null);
 
 	const auth = getAuth();
+	const dispatch = useAppDispatch();
 
 	const login = useCallback(
 		async (email: string, password: string) => {
@@ -15,9 +18,9 @@ export const useAuth = (t: TFunction) => {
 
 			try {
 				const user = (await signInWithEmailAndPassword(auth, email, password)).user;
-				
+
 				if (user) {
-					setUser(user);
+					dispatch(fetchProfile());
 				} else {
 					setServerError(t('login_page_error'));
 				}
@@ -27,10 +30,21 @@ export const useAuth = (t: TFunction) => {
 
 			setLoading(false);
 		},
-		[auth, t]
+		[auth, dispatch, t]
 	);
 
-	const signUp = useCallback(() => {}, []);
+	const register = useCallback(
+		async (data: RegisterDto) => {
+			setLoading(true);
+
+			try {
+				await dispatch(registerProfile(data));
+			} catch (e) {}
+
+			setLoading(false);
+		},
+		[dispatch]
+	);
 
 	const clearServerError = useCallback(() => {
 		setServerError('');
@@ -38,9 +52,8 @@ export const useAuth = (t: TFunction) => {
 
 	return {
 		login,
-		signUp,
+		register,
 		clearServerError,
-		user,
 		loading,
 		serverError,
 	};

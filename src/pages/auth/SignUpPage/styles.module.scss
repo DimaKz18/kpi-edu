@@ -22,18 +22,6 @@
 		}
 	}
 
-	.errorContainer {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		min-height: 36px;
-
-		.error {
-			font-size: 14px;
-			color: variables.$DarkRed;
-		}
-	}
-
 	.signUpButton {
 		margin: 0 auto;
 	}

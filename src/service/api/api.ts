@@ -2,14 +2,17 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/dist/query';
 import axios, { AxiosRequestConfig } from 'axios';
 
 export const $publicRoute = axios.create({
-	baseURL: `https://europe-west1-kpiedu-1fb35.cloudfunctions.net/api`,
+	baseURL: `https://authentication-rkn2ijq6na-ew.a.run.app`,
 	headers: {
-		'Access-Control-Allow-Origin': 'kpiedu-1fb35.web.app',
+		'Access-Control-Allow-Origin': '*',
 	},
 });
 
 export const $protectedRoute = axios.create({
 	baseURL: `https://europe-west1-kpiedu-1fb35.cloudfunctions.net/api`,
+	headers: {
+		'Access-Control-Allow-Origin': '*',
+	},
 });
 
 $protectedRoute.interceptors.request.use((config: AxiosRequestConfig) => {

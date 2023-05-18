@@ -1,6 +1,6 @@
 .container {
 	display: flex;
-	justify-content: space-around;
-	width: 100%;
+	justify-content: space-between;
+	width: calc(100% / 2);
 	margin-top: 20px;
 }

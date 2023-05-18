@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch } from 'store';
-import { fetchProfile } from 'service/profile';
+import { useAppDispatch, useAppSelector } from 'store';
+import { selectProfileRegistered, setProfileRegistered } from 'service/profile';
 import { useAuth } from 'hooks';
 import { UserData } from './types';
 import { LOGIN_TAB } from 'layout/AuthLayout/helpers';
@@ -10,6 +10,7 @@ import { NavigationLayout } from 'layout/NavigationLayout';
 import { AuthLayout } from 'layout/AuthLayout';
 import { TextInputField } from 'common/components/TextInputField';
 import { PrimaryButton } from 'common/components/PrimaryButton';
+import { RegisteredProfilePopup } from './RegisteredProfilePopup';
 import styles from './styles.module.scss';
 
 export const LoginPage = () => {
@@ -29,8 +30,9 @@ export const LoginPage = () => {
 	});
 
 	const { t } = useTranslation();
+	const { login, clearServerError, loading, serverError } = useAuth(t);
 	const dispatch = useAppDispatch();
-	const { login, clearServerError, user, loading, serverError } = useAuth(t);
+	const profileRegistered = useAppSelector(selectProfileRegistered);
 
 	const hasErrors = Object.values(errors).length > 0;
 	const disabled = hasErrors && showErrors;
@@ -58,10 +60,9 @@ export const LoginPage = () => {
 	}, [errors.email?.message, errors.password?.message, register, showErrors, t]);
 
 	useEffect(() => {
-		// hide errors when user changed some input field
 		const subscription = watch(() => {
 			if (!showErrors) return;
-			setShowErrors(false);
+			setShowErrors(false); // hide errors when user changed some input field
 			clearServerError();
 		});
 
@@ -69,23 +70,28 @@ export const LoginPage = () => {
 	}, [clearServerError, showErrors, watch]);
 
 	useEffect(() => {
-		// set server error
 		if (!serverError) return;
-		setError('email', { message: '' });
+		setError('email', { message: '' }); // set server error
 	}, [serverError, setError]);
 
 	useEffect(() => {
-		// show errors after submitting form
-		if (hasErrors) setShowErrors(true);
+		if (hasErrors) setShowErrors(true); // show errors after submitting form
 	}, [hasErrors, isSubmitting]);
+
+	useEffect(() => {
+		if (profileRegistered) {
+			setTimeout(() => {
+				dispatch(setProfileRegistered(false)); // set profile as unregistered after redirecting from sign up page
+			}, 2000);
+		}
+	}, [dispatch, profileRegistered]);
 
 	const onSubmit: SubmitHandler<UserData> = useCallback(
 		async (data) => {
 			const { email, password } = data;
 			await login(email, password);
-			if (user) dispatch(fetchProfile());
 		},
-		[dispatch, login, user]
+		[login]
 	);
 
 	return (
@@ -107,6 +113,7 @@ export const LoginPage = () => {
 						disabled={disabled}
 						className={styles.loginButton}
 					/>
+					<RegisteredProfilePopup show={profileRegistered} />
 				</form>
 			</AuthLayout>
 		</NavigationLayout>

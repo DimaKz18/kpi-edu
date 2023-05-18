@@ -3,7 +3,7 @@ import { useFetchMediasQuery } from 'service/media';
 import { MediaFilters, MediaFilterKey } from './types';
 import { useDebounceValue, useSearch } from 'hooks';
 import { NavigationLayout } from 'layout/NavigationLayout';
-import { SearchInput } from 'common/components/SearcInput';
+import { SearchInput } from 'common/components/SearchInput';
 import { Filters } from './components/Filters';
 import { MediaList } from './components/MediaList';
 import styles from './styles.module.scss';

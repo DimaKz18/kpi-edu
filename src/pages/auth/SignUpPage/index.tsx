@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { SubmitHandler, useForm } from 'react-hook-form';
-import { useAppDispatch } from 'store';
+import { useNavigate } from 'react-router-dom';
+import { useAppSelector } from 'store';
+import { selectProfileError, selectProfileRegistered } from 'service/profile';
+import { RegisterDto } from 'service/profile/dtos';
+import { useAuth } from 'hooks';
+import { loginRoute } from 'routes/routes';
 import { UserData } from './types';
 import { emailPattern, passwordPattern } from 'utils/regex';
 import { MAX_FIRST_NAME_LENGTH, MAX_LAST_NAME_LENGTH } from './helpers';
@@ -14,7 +19,6 @@ import styles from './styles.module.scss';
 
 export const SignUpPage = () => {
 	const [showErrors, setShowErrors] = useState(false);
-	const [serverError, setServerError] = useState('');
 
 	const {
 		register,
@@ -34,7 +38,10 @@ export const SignUpPage = () => {
 	});
 
 	const { t } = useTranslation();
-	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	const { register: registerProfile, loading } = useAuth(t);
+	const profileError = useAppSelector(selectProfileError);
+	const profileRegistered = useAppSelector(selectProfileRegistered);
 
 	const newPasswordInput = (useRef({}).current = watch('password', ''));
 	const repeatedPasswordInput = (useRef({}).current = watch('confirmedPassword', ''));
@@ -121,28 +128,41 @@ export const SignUpPage = () => {
 	]);
 
 	useEffect(() => {
-		// hide errors when user changed some input field
 		const subscription = watch(() => {
 			if (!showErrors) return;
-			setShowErrors(false);
-			setServerError('');
+			setShowErrors(false); // hide errors when user changed some input field
 		});
 
 		return () => subscription.unsubscribe();
 	}, [showErrors, watch]);
 
 	useEffect(() => {
-		// set server error
-		if (!serverError) return;
-		setError('email', { message: '' });
-	}, [serverError, setError]);
+		if (!profileError) return;
+		setError('email', { message: t('sign_up_page_email_error') }); // set server error
+	}, [profileError, setError, t]);
 
 	useEffect(() => {
-		// show errors after submitting form
-		if (hasErrors) setShowErrors(true);
+		if (hasErrors) setShowErrors(true); // show errors after submitting form
 	}, [hasErrors, isSubmitting]);
 
-	const onSubmit: SubmitHandler<UserData> = useCallback((data) => {}, []);
+	useEffect(() => {
+		if (profileRegistered) navigate(loginRoute); // navigate to login after successful registration
+	}, [navigate, profileRegistered]);
+
+	const onSubmit: SubmitHandler<UserData> = useCallback(
+		(data) => {
+			const registerDto: RegisterDto = {
+				email: data.email,
+				first_name: data.firstName,
+				last_name: data.lastName,
+				password: data.password,
+				repeat_password: data.confirmedPassword,
+				is_author: data.isCreator,
+			};
+			registerProfile(registerDto);
+		},
+		[registerProfile]
+	);
 
 	return (
 		<NavigationLayout>
@@ -161,12 +181,9 @@ export const SignUpPage = () => {
 							{t('sign_up_page_is_creator_field_placeholder')}
 						</p>
 					</div>
-					<div className={styles.errorContainer}>
-						{serverError && <p className={styles.error}>{serverError}</p>}
-					</div>
 					<PrimaryButton
 						title={t('sign_up_page_sign_up_button')}
-						loading={false}
+						loading={loading}
 						disabled={disabled}
 						className={styles.signUpButton}
 					/>

@@ -1,7 +1,8 @@
 export type RegisterDto = {
-	firstName: string;
-	lastName: string;
 	email: string;
+	first_name: string;
+	last_name: string;
 	password: string;
-	repeatPassword: string;
+	repeat_password: string;
+	is_author: boolean;
 };
