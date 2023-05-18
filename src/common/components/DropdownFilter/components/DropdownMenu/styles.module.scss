@@ -1,0 +1,26 @@
+@use 'utils/variables';
+
+.container {
+	position: absolute;
+	top: 50px;
+	left: 0;
+	width: 100%;
+	border-radius: 4px;
+	background-color: variables.$Blue;
+	border: 1px solid variables.$Blue;
+	z-index: 1;
+
+	.removeFilterContainer {
+		height: 40px;
+		padding: 12px;
+		cursor: pointer;
+		border-top: 0.5px solid variables.$White;
+		background-color: variables.$LightRed;
+
+		.removeButtonTitle {
+			font-size: 14px;
+			font-weight: 600;
+			color: variables.$White;
+		}
+	}
+}

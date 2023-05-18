@@ -1,4 +1,55 @@
 {
-	"login_tab": "Login",
-	"registration_tab": "Registration"
+	"navigation_layout_app_title": "Actual Press",
+	"navigation_layout_explore_navigation_tab_title": "Explore",
+	"navigation_layout_bookmarks_navigation_tab_title": "Bookmarks",
+	"navigation_layout_profile_navigation_tab_title": "Profile",
+	"navigation_layout_ua_language_tab": "UA",
+	"navigation_layout_en_language_tab": "EN",
+
+	"search_input_placeholder": "Search",
+
+	"media_specialization_filter_title": "Specialization",
+	"media_sport_specialization_filter_title": "Sport",
+	"media_politics_specialization_filter_title": "Politics",
+	"media_culture_specialization_filter_title": "Culture",
+	"media_general_specialization_filter_title": "General",
+	"media_type_filter_title": "Type",
+	"media_agency_type_filter_title": "Agency",
+	"media_magazine_type_filter_title": "Magazine",
+	"media_newspaper_type_filter_title": "Newspaper",
+	"media_online_specialization_filter_title": "Online media",
+	"media_region_filter_title": "Region",
+	"media_kyiv_region_filter_title": "Kyiv region",
+	"media_zhytomyr_region_filter_title": "Zhytomyr region",
+	"media_lviv_region_filter_title": "Lviv region",
+	"media_odesa_region_filter_title": "Odesa region",
+	"media_poltava_region_filter_title": "Poltava region",
+	"media_remove_filter_title": "Remove filter",
+
+	"auth_page_login_tab": "Log In",
+	"auth_page_sign_up_tab": "Sign Up",
+	"auth_page_input_required_error": "Required",
+
+	"login_page_email_field_placeholder": "email",
+	"login_page_password_field_placeholder": "password",
+	"login_page_forgot_password_title": "Forgot password?",
+	"login_page_login_button": "Log In",
+	"login_page_error": "Invalid data",
+	"login_page_register_profile_popup_description": "Your account has been activated successfully. You can now login.",
+
+	"sign_up_page_first_name_field_placeholder": "first name",
+	"sign_up_page_first_name_error": "First name should not be longer than 20 characters",
+	"sign_up_page_last_name_field_placeholder": "last name",
+	"sign_up_page_last_name_error": "Last name should not be longer than 30 characters",
+	"sign_up_page_email_field_placeholder": "email",
+	"sign_up_page_email_pattern_error": "Please enter a valid email",
+	"sign_up_page_password_field_placeholder": "password",
+	"sign_up_page_password_pattern_error": "Password must be at least 8 characters long, contain at least one number and one capital letter",
+	"sign_up_page_password_match_error": "Passwords do not match",
+	"sign_up_page_confirm_password_field_placeholder": "confirm password",
+	"sign_up_page_is_creator_field_placeholder": "Creator",
+	"sign_up_page_sign_up_button": "Sign Up",
+	"sign_up_page_email_error": "Email is already registered",
+
+	"explore_page_no_result_title": "Nothing was found for the given parameters"
 }

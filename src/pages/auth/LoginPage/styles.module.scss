@@ -1,0 +1,30 @@
+@use 'utils/variables';
+
+.container {
+	width: 100%;
+	margin-top: 60px;
+
+	.forgotPasswordTitle {
+		width: fit-content;
+		margin-left: auto;
+		font-size: 14px;
+		cursor: pointer;
+		color: variables.$LightBlue;
+	}
+
+	.errorContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		min-height: 36px;
+
+		.error {
+			font-size: 14px;
+			color: variables.$DarkRed;
+		}
+	}
+
+	.loginButton {
+		margin: 0 auto;
+	}
+}

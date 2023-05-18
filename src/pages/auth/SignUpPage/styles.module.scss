@@ -1,0 +1,28 @@
+@use 'utils/variables';
+
+.container {
+	width: 100%;
+	margin-top: 60px;
+
+	.checkboxContainer {
+		display: flex;
+		align-items: center;
+
+		.checkbox {
+			width: 16px;
+			height: 16px;
+			cursor: pointer;
+			accent-color: variables.$Blue;
+		}
+
+		.placeholder {
+			margin-left: 6px;
+			font-size: 14px;
+			color: variables.$Blue;
+		}
+	}
+
+	.signUpButton {
+		margin: 0 auto;
+	}
+}

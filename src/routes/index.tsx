@@ -1,22 +1,8 @@
-import { useEffect } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import { useIsAuthenticated, useMountEffect } from '../hooks';
-import { ProtectedRoute } from './components/ProtectedRoute';
-import { PUBLIC_ROUTES, RPOTECTED_ROUTES } from './helpers';
+import { Route, Routes } from 'react-router-dom';
+import { ProtectedRoute } from './ProtectedRoute';
+import { PUBLIC_ROUTES, PROTECTED_ROUTES } from './helpers';
 
 export const AppRoutes = () => {
-	const authId = useIsAuthenticated();
-	const navigate = useNavigate();
-
-	useMountEffect(() => {
-		const token = localStorage.getItem('token');
-		// TODO add reauthenticate call
-	});
-
-	useEffect(() => {
-		navigate(`${authId ? '/home' : '/login'}`);
-	}, [authId]);
-
 	const renderPublicRoutes = () => {
 		return PUBLIC_ROUTES.map((route) => (
 			<Route key={route.path} path={route.path} element={route.element} />
@@ -24,7 +10,7 @@ export const AppRoutes = () => {
 	};
 
 	const renderProtectedRoutes = () => {
-		return RPOTECTED_ROUTES.map((route) => (
+		return PROTECTED_ROUTES.map((route) => (
 			<Route
 				key={route.path}
 				path={route.path}

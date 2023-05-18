@@ -1,1 +1,2 @@
-export * from './LoginDTO';
+export * from './AxiosResponse';
+export * from './RegisterDto';

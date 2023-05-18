@@ -1,0 +1,12 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 160px;
+	height: 40px;
+	padding: 6px;
+	border-radius: 4px;
+	border: 1px solid variables.$Blue;
+}
