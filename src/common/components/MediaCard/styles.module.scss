@@ -6,9 +6,8 @@
 	justify-content: space-between;
 	text-align: left;
 	height: 370px;
-	padding: 10px;
+	padding-bottom: 10px;
 	border-radius: 20px;
-	border: 1px solid variables.$LightBlue;
 	background-color: variables.$SkyBlue;
 
 	.photo {
@@ -17,14 +16,22 @@
 		border-radius: 20px;
 	}
 
-	.mediaTitle {
-		font-size: 18px;
-		font-weight: 700;
-	}
+	.mediaInformation {
+		padding: 10px;
 
-	.filterTitle {
-		margin-top: 4px;
-		font-size: 16px;
-		font-style: italic;
+		.mediaTitle {
+			font-size: 18px;
+			font-weight: 700;
+		}
+
+		.filterTitle {
+			margin-top: 4px;
+			font-size: 16px;
+			font-style: italic;
+		}
+	}
+	.subscribeButton {
+		width: calc(100% - 20px);
+		margin: 0 auto;
 	}
 }
