@@ -1,0 +1,11 @@
+@use 'utils/variables';
+
+.container {
+	position: relative;
+	width: 500px;
+	height: 500px;
+
+	.cropper {
+		background-color: variables.$Black;
+	}
+}

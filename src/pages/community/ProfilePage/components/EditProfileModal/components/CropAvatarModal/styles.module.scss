@@ -18,26 +18,8 @@
 		position: relative;
 		text-align: center;
 		width: 500px;
-		height: 400px;
-		padding: 40px;
+		height: 550px;
 		border-radius: 6px;
-		background-color: variables.$SkyBlue;
-
-		.closeIcon {
-			position: absolute;
-			top: 20px;
-			left: 20px;
-			cursor: pointer;
-		}
-
-		.inputsContainer {
-			width: 100%;
-			margin-top: 20px;
-		}
-
-		.saveButton {
-			position: absolute;
-			bottom: 20px;
-		}
+		background-color: variables.$Black;
 	}
 }

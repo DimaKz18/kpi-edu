@@ -47,3 +47,13 @@ export const validateProfile = (
 
 	return errors;
 };
+
+export const getProfileDto = (profile: UpdatedProfile) => {
+	const profileDto = {
+		first_name: profile.firstName,
+		last_name: profile.lastName,
+		avatar: profile.avatar,
+	};
+
+	return profileDto;
+};

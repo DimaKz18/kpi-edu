@@ -2,10 +2,11 @@ import { memo, MouseEvent } from 'react';
 
 type Props = {
 	className?: string;
+	color?: string;
 	onClick?: (e: MouseEvent<SVGSVGElement>) => void;
 };
 
-export const CloseIcon = memo(({ className, onClick }: Props) => {
+export const CloseIcon = memo(({ className,color, onClick }: Props) => {
 	return (
 		<svg
 			className={className}
@@ -18,7 +19,7 @@ export const CloseIcon = memo(({ className, onClick }: Props) => {
 		>
 			<path
 				d='M1 1L17 17M17 1L1 17L17 1Z'
-				stroke='#205295'
+				stroke={color || 'black'}
 				strokeWidth='2'
 				strokeLinecap='round'
 				strokeLinejoin='round'

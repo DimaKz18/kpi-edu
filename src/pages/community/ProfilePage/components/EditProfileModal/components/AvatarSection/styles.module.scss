@@ -1,0 +1,34 @@
+@use 'utils/variables';
+
+.container {
+	position: relative;
+	margin-top: 20px;
+
+	.avatar {
+		width: 100px;
+		height: 100px;
+	}
+
+	.removeIconContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 0;
+		right: 4px;
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		cursor: pointer;
+		background-color: variables.$BlackTransparent60;
+
+		.removeIcon {
+			width: 16px;
+			height: 16px;
+		}
+	}
+
+	.fileInput {
+		display: none;
+	}
+}
