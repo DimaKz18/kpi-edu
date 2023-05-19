@@ -4,7 +4,7 @@ import { DefaultAvatarIcon } from 'common/icons/common';
 import styles from './styles.module.scss';
 
 type Props = {
-	profileImage?: string | null;
+	profileImage: string | null;
 	avatarContainerClassName?: string;
 	avatarClassName?: string;
 	onClick?: (e: MouseEvent<HTMLDivElement>) => void;

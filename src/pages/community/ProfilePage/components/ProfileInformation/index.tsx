@@ -1,9 +1,10 @@
 import { memo, useCallback, useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { selectProfile } from 'service/profile';
 import { useAppSelector } from 'store';
+import { selectProfile } from 'service/profile';
+import { ProfileDto } from 'service/profile/dtos';
 import { useDebounceCallback } from 'hooks';
-import { validateProfile } from './utils';
+import { getProfileDto, validateProfile } from './utils';
 import { UpdatedProfile, UpdatedProfileErrors, UpdatedProfileKey } from './types';
 import { Avatar } from 'common/components/Avatar';
 import { PrimaryButton } from 'common/components/PrimaryButton';
@@ -12,12 +13,12 @@ import { EditProfileModal } from '../EditProfileModal';
 import styles from './styles.module.scss';
 
 type Props = {
-	onSaveProfileClick: () => void;
+	onSaveProfileClick: (profile: ProfileDto) => void;
 	onLogoutClick: () => void;
 };
 
 export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: Props) => {
-	const [showEditProfileModal, setShowEditProfileModal] = useState(false);
+	const [showEditProfileModal, setShowEditProfileModal] = useState(true);
 	const [updatedProfile, setUpdatedProfile] = useState<UpdatedProfile>();
 	const [errors, setErrors] = useState<UpdatedProfileErrors>({});
 	const [showErrors, setShowErrors] = useState(false);
@@ -33,7 +34,7 @@ export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: P
 			const updatedProfile: UpdatedProfile = {
 				firstName: profile.first_name,
 				lastName: profile.last_name,
-				avatar: profile.avatar || null,
+				avatar: profile.avatar,
 			};
 
 			setUpdatedProfile(updatedProfile);
@@ -72,10 +73,9 @@ export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: P
 			setShowErrors(true);
 			return;
 		}
-		console.log(updatedProfile); // get profileDto
-		// const profileDto = getProfileDto(updatedProfile); // submit profile
-		// onSaveProfileClick(profileDto);
-	}, [hasErrors, updatedProfile]);
+		const profileDto = getProfileDto(updatedProfile);
+		onSaveProfileClick(profileDto); // submit profile
+	}, [hasErrors, onSaveProfileClick, updatedProfile]);
 
 	return updatedProfile ? (
 		<div className={styles.container}>
@@ -102,10 +102,10 @@ export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: P
 				show={showEditProfileModal}
 				firstName={updatedProfile.firstName}
 				lastName={updatedProfile.lastName}
+				avatar={updatedProfile.avatar}
 				disabled={disabled}
 				errors={errors}
 				showErrors={showErrors}
-				avatar={updatedProfile.avatar}
 				onCloseClick={handleToggleProfileModal}
 				onProfileChange={debouncedProfileChange}
 				onSaveProfileClick={handleSaveProfileClick}

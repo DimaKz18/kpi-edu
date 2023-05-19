@@ -14,10 +14,10 @@ type Props = {
 	show: boolean;
 	firstName: string;
 	lastName: string;
+	avatar: string | null;
 	disabled: boolean;
 	errors: UpdatedProfileErrors;
 	showErrors: boolean;
-	avatar?: string | null;
 	onCloseClick: () => void;
 	onProfileChange: (field: UpdatedProfileKey, value: string | null) => void;
 	onSaveProfileClick: () => void;
@@ -28,10 +28,10 @@ export const EditProfileModal = memo(
 		show,
 		firstName,
 		lastName,
+		avatar,
 		disabled,
 		errors,
 		showErrors,
-		avatar,
 		onCloseClick,
 		onProfileChange,
 		onSaveProfileClick,

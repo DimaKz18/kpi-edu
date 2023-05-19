@@ -5,7 +5,7 @@ import { CropAvatarModal } from '../CropAvatarModal';
 import styles from './styles.module.scss';
 
 type Props = {
-	avatar?: string | null;
+	avatar: string | null;
 	onAvatarChange: (value: string | null) => void;
 };
 

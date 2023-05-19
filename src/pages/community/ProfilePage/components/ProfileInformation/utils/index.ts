@@ -1,4 +1,5 @@
 import { TFunction } from 'react-i18next';
+import { ProfileDto } from 'service/profile/dtos';
 import { FIRST_NAME_MAX_LENGTH, LAST_NAME_MAX_LENGTH } from '../helpers';
 import { UpdatedProfile, UpdatedProfileErrors, UpdatedProfileKey } from '../types';
 
@@ -48,7 +49,7 @@ export const validateProfile = (
 	return errors;
 };
 
-export const getProfileDto = (profile: UpdatedProfile) => {
+export const getProfileDto = (profile: UpdatedProfile): ProfileDto => {
 	const profileDto = {
 		first_name: profile.firstName,
 		last_name: profile.lastName,

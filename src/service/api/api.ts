@@ -9,7 +9,7 @@ export const $publicRoute = axios.create({
 });
 
 export const $protectedRoute = axios.create({
-	baseURL: `https://europe-west1-kpiedu-1fb35.cloudfunctions.net/api`,
+	baseURL: `https://europe-west1-kpiedu-1fb35.cloudfunctions.net`,
 	headers: {
 		'Access-Control-Allow-Origin': '*',
 	},
@@ -22,7 +22,7 @@ $protectedRoute.interceptors.request.use((config: AxiosRequestConfig) => {
 });
 
 export const protectedQuery = fetchBaseQuery({
-	baseUrl: 'https://europe-west1-kpiedu-1fb35.cloudfunctions.net/api',
+	baseUrl: 'https://europe-west1-kpiedu-1fb35.cloudfunctions.net',
 	prepareHeaders: (headers) => {
 		const token = localStorage.getItem('token');
 		if (token) headers.set('authorization', `${token}`);
