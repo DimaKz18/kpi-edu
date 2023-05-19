@@ -18,7 +18,7 @@ type Props = {
 };
 
 export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: Props) => {
-	const [showEditProfileModal, setShowEditProfileModal] = useState(true);
+	const [showEditProfileModal, setShowEditProfileModal] = useState(false);
 	const [updatedProfile, setUpdatedProfile] = useState<UpdatedProfile>();
 	const [errors, setErrors] = useState<UpdatedProfileErrors>({});
 	const [showErrors, setShowErrors] = useState(false);
