@@ -1,0 +1,25 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: variables.$BlackTransparent60;
+
+	.modal {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		position: relative;
+		text-align: center;
+		width: 500px;
+		height: 550px;
+		border-radius: 6px;
+		background-color: variables.$Black;
+	}
+}

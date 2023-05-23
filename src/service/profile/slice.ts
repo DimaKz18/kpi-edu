@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorResponse } from '../api';
-import { registerProfile, fetchProfile } from './actions';
+import { registerProfile, fetchProfile, updateProfile } from './actions';
 import { Profile } from './models';
 
 export type ProfileState = {
@@ -8,6 +8,7 @@ export type ProfileState = {
 	loadingProfile: boolean;
 	profileError?: ErrorResponse;
 	profileRegistered: boolean;
+	loadingUpdatedProfile: boolean;
 };
 
 const initialState: ProfileState = {
@@ -15,6 +16,7 @@ const initialState: ProfileState = {
 	loadingProfile: true,
 	profileError: undefined,
 	profileRegistered: false,
+	loadingUpdatedProfile: false,
 };
 
 const profileSlice = createSlice({
@@ -55,6 +57,17 @@ const profileSlice = createSlice({
 			})
 			.addCase(fetchProfile.rejected, (state) => {
 				state.loadingProfile = false;
+			})
+
+			.addCase(updateProfile.fulfilled, (state, action) => {
+				state.profile = action.payload.result;
+				state.loadingUpdatedProfile = false;
+			})
+			.addCase(updateProfile.pending, (state) => {
+				state.loadingUpdatedProfile = true;
+			})
+			.addCase(updateProfile.rejected, (state) => {
+				state.loadingUpdatedProfile = false;
 			});
 	},
 });

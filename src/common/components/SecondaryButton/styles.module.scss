@@ -1,0 +1,9 @@
+@use 'utils/variables';
+
+.button {
+	background-color: variables.$DarkRed;
+
+	&:hover {
+		background-color: variables.$PaleDarkRed;
+	}
+}

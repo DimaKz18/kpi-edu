@@ -5,7 +5,7 @@ import { Media } from './models';
 // export const mediaService = createApi({
 // 	reducerPath: 'mediaService',
 // 	baseQuery: protectedQuery,
-// 	endpoints: (build) => ({`
+// 	endpoints: (build) => ({
 // 		fetchMedia: build.query<Media[], string>({
 // 			query: (search: string) => ({
 // 				url: '/profile',

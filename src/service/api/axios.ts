@@ -68,7 +68,7 @@ export const axiosGetPaginatedRequest = async <T>(
  * AXIOS POST request
  * - url: the relative endpoint url e.g category/getCategories
  * - data: the body object
- * - publicRequest: optional parameter. It should pe used only for endoints that work without authorization (access token )
+ * - publicRequest: optional parameter. It should pe used only for endpoints that work without authorization (access token )
  */
 export const axiosPostRequest = async <T1, T2>(
 	url: string,
@@ -93,7 +93,7 @@ export const axiosPostRequest = async <T1, T2>(
  * AXIOS DELETE request
  * - url: the relative endpoint url e.g category/getCategories
  * - data: the body object, may be optional
- * - publicRequest: optional parameter. It should pe used only for endoints that work without authorization (access token )
+ * - publicRequest: optional parameter. It should pe used only for endpoints that work without authorization (access token )
  */
 export const axiosDeleteRequest = async <T1, T2>(
 	url: string,
@@ -118,7 +118,7 @@ export const axiosDeleteRequest = async <T1, T2>(
  * AXIOS PUT request
  * - url: the relative endpoint url e.g category/getCategories
  * - data: the body object, may be optional
- * - publicRequest: optional parameter. It should pe used only for endoints that work without authorization (access token )
+ * - publicRequest: optional parameter. It should pe used only for endpoints that work without authorization (access token )
  */
 export const axiosPutRequest = async <T1, T2>(
 	url: string,
@@ -130,6 +130,31 @@ export const axiosPutRequest = async <T1, T2>(
 	return new Promise((resolve, reject) => {
 		axiosInstance
 			.delete(url, data)
+			.then((response) => {
+				resolve(response.data);
+			})
+			.catch((error) => {
+				reject(getErrorResponse(error));
+			});
+	});
+};
+
+/**
+ * AXIOS PATCH request
+ * - url: the relative endpoint url e.g category/getCategories
+ * - data: the body object, may be optional
+ * - publicRequest: optional parameter. It should pe used only for endpoints that work without authorization (access token )
+ */
+export const axiosPatchRequest = async <T1, T2>(
+	url: string,
+	data?: T1,
+	publicRequest?: boolean
+): Promise<T2> => {
+	const axiosInstance = publicRequest ? $publicRoute : $protectedRoute;
+
+	return new Promise((resolve, reject) => {
+		axiosInstance
+			.patch(url, data)
 			.then((response) => {
 				resolve(response.data);
 			})
