@@ -54,6 +54,7 @@ export const getProfileDto = (profile: UpdatedProfile): ProfileDto => {
 		first_name: profile.firstName,
 		last_name: profile.lastName,
 		avatar: profile.avatar,
+		is_author: profile.isAuthor,
 	};
 
 	return profileDto;

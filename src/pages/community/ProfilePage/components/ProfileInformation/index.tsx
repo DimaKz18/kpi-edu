@@ -26,6 +26,7 @@ export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: P
 	const { t } = useTranslation();
 	const profile = useAppSelector(selectProfile);
 
+	const fullName = `${updatedProfile?.firstName} ${updatedProfile?.lastName}`;
 	const hasErrors = Object.values(errors).length > 0;
 	const disabled = hasErrors && showErrors;
 
@@ -35,6 +36,7 @@ export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: P
 				firstName: profile.first_name,
 				lastName: profile.last_name,
 				avatar: profile.avatar,
+				isAuthor: profile.is_author,
 			};
 
 			setUpdatedProfile(updatedProfile);
@@ -80,12 +82,12 @@ export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: P
 	return updatedProfile ? (
 		<div className={styles.container}>
 			<Avatar
-				profileImage={null}
+				profileImage={updatedProfile.avatar}
 				avatarContainerClassName={styles.avatar}
 				avatarClassName={styles.avatar}
 			/>
 			<div className={styles.personalInformationContainer}>
-				<p className={styles.fullName}>Will Mitchel</p>
+				<p className={styles.fullName}>{fullName}</p>
 				<div className={styles.actionButtonsContainer}>
 					<PrimaryButton
 						title={t('profile_page_edit_button')}

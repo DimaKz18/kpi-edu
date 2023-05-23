@@ -1,6 +1,8 @@
 import { memo, MouseEvent, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { useAppSelector } from 'store';
+import { selectLoadingUpdatedProfile } from 'service/profile';
 import { UpdatedProfileErrors, UpdatedProfileKey } from '../ProfileInformation/types';
 import { animationVariants } from './helpers';
 import ReactPortal from 'common/components/ReactPortal';
@@ -38,6 +40,8 @@ export const EditProfileModal = memo(
 	}: Props) => {
 		const { t } = useTranslation();
 
+		const loadingUpdatedProfile = useAppSelector(selectLoadingUpdatedProfile);
+
 		const inputs = useMemo(() => {
 			return [
 				{
@@ -67,9 +71,12 @@ export const EditProfileModal = memo(
 			e.stopPropagation();
 		};
 
-		const handleAvatarChange = useCallback((avatar: string | null) => {
-			onProfileChange('avatar', avatar);
-		}, [onProfileChange]);
+		const handleAvatarChange = useCallback(
+			(avatar: string | null) => {
+				onProfileChange('avatar', avatar);
+			},
+			[onProfileChange]
+		);
 
 		return (
 			<ReactPortal wrapperId={'edit-profile-modal'}>
@@ -83,7 +90,11 @@ export const EditProfileModal = memo(
 					onClick={onCloseClick}
 				>
 					<div className={styles.modal} onClick={onModalClick}>
-						<CloseIcon className={styles.closeIcon} color='#205295' onClick={onCloseClick} />
+						<CloseIcon
+							className={styles.closeIcon}
+							color='#205295'
+							onClick={onCloseClick}
+						/>
 						<AvatarSection avatar={avatar} onAvatarChange={handleAvatarChange} />
 						<div className={styles.inputsContainer}>
 							{inputs.map((input) => {
@@ -92,7 +103,7 @@ export const EditProfileModal = memo(
 						</div>
 						<PrimaryButton
 							title={t('profile_page_updated_profile_save_button')}
-							loading={false}
+							loading={loadingUpdatedProfile}
 							disabled={disabled}
 							className={styles.saveButton}
 							onClick={onSaveProfileClick}

@@ -22,3 +22,8 @@ export const selectProfileRegistered = createSelector(
 	[getProfileState],
 	(profileState) => profileState.profileRegistered
 );
+
+export const selectLoadingUpdatedProfile = createSelector(
+	[getProfileState],
+	(profileState) => profileState.loadingUpdatedProfile
+);
