@@ -56,11 +56,8 @@
 
 	"explore_page_no_result_title": "Для вказаних параметрів нічого не знайдено",
 
-	"profile_page_edit_button": "Редагувати",
-	"profile_page_logout_button": "Вийти",
-	"profile_page_updated_profile_first_name_placeholder": "ім'я",
-	"profile_page_updated_profile_first_name_error": "Ім'я повинно бути більшим ніж 0 й меншим ніж 50",
-	"profile_page_updated_profile_last_name_placeholder": "прізвище",
-	"profile_page_updated_profile_last_name_error": "Прізвище повинно бути більшим ніж 0 й меншим ніж 50",
-	"profile_page_updated_profile_save_button": "Зберегти"
+	"profile_page_personal_information_tab": "Персональна інформація",
+	"profile_page_password_information_tab": "Інформація про пароль",
+	"profile_page_upload_avatar_modal_save_button": "Зберегти",
+	"profile_page_logout_button": "Вийти"
 }

@@ -15,7 +15,7 @@ export const HeaderSection = memo(({ onCloseClick, onSaveClick }: Props) => {
 		<div className={styles.container}>
 			<CloseIcon className={styles.icon} color='white' onClick={onCloseClick} />
 			<p className={styles.saveButton} onClick={onSaveClick}>
-				{t('profile_page_updated_profile_save_button')}
+				{t('profile_page_upload_avatar_modal_save_button')}
 			</p>
 		</div>
 	);

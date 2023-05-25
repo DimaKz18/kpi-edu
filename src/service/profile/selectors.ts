@@ -27,3 +27,13 @@ export const selectLoadingUpdatedProfile = createSelector(
 	[getProfileState],
 	(profileState) => profileState.loadingUpdatedProfile
 );
+
+export const selectLoadingUpdatedPassword = createSelector(
+	[getProfileState],
+	(profileState) => profileState.loadingUpdatedPassword
+);
+
+export const selectPasswordUpdated = createSelector(
+	[getProfileState],
+	(profileState) => profileState.passwordUpdated
+);

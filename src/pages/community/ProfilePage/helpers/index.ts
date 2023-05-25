@@ -1,0 +1,2 @@
+export const PERSONAL_INFORMATION_TAB = 1;
+export const PASSWORD_INFORMATION_TAB = 2;

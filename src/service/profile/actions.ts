@@ -1,6 +1,11 @@
 import { createAppAsyncThunk } from '../../store/extensions';
-import { ProfileDto, RegisterDto } from './dtos';
-import { fetchProfileCall, registerProfileCall, updateProfileCall } from './service';
+import { PasswordDto, ProfileDto, RegisterDto } from './dtos';
+import {
+	fetchProfileCall,
+	registerProfileCall,
+	updateProfileCall,
+	updatePasswordCall,
+} from './service';
 
 export const registerProfile = createAppAsyncThunk(
 	'profile/registerProfile',
@@ -17,5 +22,12 @@ export const updateProfile = createAppAsyncThunk(
 	'profile/updateProfile',
 	async (data: ProfileDto) => {
 		return updateProfileCall(data);
+	}
+);
+
+export const updatePassword = createAppAsyncThunk(
+	'profile/updatePassword',
+	async (data: PasswordDto) => {
+		return updatePasswordCall(data);
 	}
 );

@@ -1,3 +1,5 @@
+export const AVATAR_SIZE = 200;
+
 export const animationVariants = {
 	initial: {
 		opacity: 0,
