@@ -3,7 +3,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { useTranslation } from 'react-i18next';
 import { PasswordInformationData } from './types';
 import { passwordPattern } from 'utils/regex';
-import { TextInputField } from '../PersonalInformationSection/TextInputField';
+import { TextInputField } from '../TextInputField';
 import { PrimaryButton } from 'common/components/PrimaryButton';
 import styles from './styles.module.scss';
 

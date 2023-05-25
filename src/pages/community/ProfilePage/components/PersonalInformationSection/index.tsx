@@ -6,7 +6,7 @@ import {
 	MAX_FIRST_NAME_LENGTH,
 	MAX_LAST_NAME_LENGTH,
 } from 'pages/auth/SignUpPage/helpers';
-import { TextInputField } from './TextInputField';
+import { TextInputField } from '../TextInputField';
 import { PrimaryButton } from 'common/components/PrimaryButton';
 import styles from './styles.module.scss';
 
