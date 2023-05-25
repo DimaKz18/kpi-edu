@@ -9,4 +9,5 @@ export type Media = {
 	type: MediaType;
 	region: MediaRegion;
 	rate: number;
+	subscribed: boolean;
 };

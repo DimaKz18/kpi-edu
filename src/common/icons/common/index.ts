@@ -4,3 +4,4 @@ export * from './SearchIcon';
 export * from './OpenArrowIcon';
 export * from './CloseArrowIcon';
 export * from './CloseIcon';
+export * from './EmptyResultIcon';

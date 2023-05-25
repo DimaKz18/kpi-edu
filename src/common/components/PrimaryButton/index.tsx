@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, MouseEvent } from 'react';
 import { ClipLoader } from 'react-spinners';
 import clsx from 'clsx';
 import styles from './styles.module.scss';
@@ -8,7 +8,7 @@ type Props = {
 	loading?: boolean;
 	disabled?: boolean;
 	className?: string;
-	onClick?: () => void;
+	onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const PrimaryButton = memo(
@@ -20,9 +20,9 @@ export const PrimaryButton = memo(
 			className
 		);
 
-		const handleClick = () => {
+		const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
 			if (disabled || !onClick) return;
-			onClick();
+			onClick(e);
 		};
 
 		return (

@@ -2,19 +2,15 @@ import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MediaFilterKey } from '../../types';
 import {
-	SPORT_SPECIALIZATION_FILTER,
 	POLITICS_SPECIALIZATION_FILTER,
 	CULTURE_SPECIALIZATION_FILTER,
 	GENERAL_SPECIALIZATION_FILTER,
 	AGENCY_TYPE_FILTER,
-	MAGAZINE_TYPE_FILTER,
 	NEWSPAPER_TYPE_FILTER,
 	ONLINE_TYPE_FILTER,
 	KYIV_REGION_FILTER,
-	ZHYTOMYR_REGION_FILTER,
 	LVIV_REGION_FILTER,
-	ODESA_REGION_FILTER,
-	POLTAVA_REGION_FILTER,
+	CHERKASY_REGION_FILTER,
 } from './helpers';
 import { DropdownFilter } from 'common/components/DropdownFilter';
 import { RateFilter } from 'common/components/RateFilter';
@@ -41,10 +37,6 @@ export const Filters = memo(
 		const specializationFilters = useMemo(() => {
 			return [
 				{
-					title: t('media_sport_specialization_filter_title'),
-					value: SPORT_SPECIALIZATION_FILTER,
-				},
-				{
 					title: t('media_politics_specialization_filter_title'),
 					value: POLITICS_SPECIALIZATION_FILTER,
 				},
@@ -66,10 +58,6 @@ export const Filters = memo(
 					value: AGENCY_TYPE_FILTER,
 				},
 				{
-					title: t('media_magazine_type_filter_title'),
-					value: MAGAZINE_TYPE_FILTER,
-				},
-				{
 					title: t('media_newspaper_type_filter_title'),
 					value: NEWSPAPER_TYPE_FILTER,
 				},
@@ -87,20 +75,12 @@ export const Filters = memo(
 					value: KYIV_REGION_FILTER,
 				},
 				{
-					title: t('media_zhytomyr_region_filter_title'),
-					value: ZHYTOMYR_REGION_FILTER,
-				},
-				{
 					title: t('media_lviv_region_filter_title'),
 					value: LVIV_REGION_FILTER,
 				},
 				{
-					title: t('media_odesa_region_filter_title'),
-					value: ODESA_REGION_FILTER,
-				},
-				{
-					title: t('media_poltava_region_filter_title'),
-					value: POLTAVA_REGION_FILTER,
+					title: t('media_cherkasy_region_filter_title'),
+					value: CHERKASY_REGION_FILTER,
 				},
 			];
 		}, [t]);

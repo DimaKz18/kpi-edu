@@ -3,7 +3,7 @@
 .container {
 	text-align: center;
 	width: 100%;
-	padding: 20px;
+	padding: 60px 20px;
 
 	.mediaListContainer {
 		display: grid;
@@ -12,9 +12,22 @@
 		margin: 0 auto;
 	}
 
-	.noResultTitle {
-		font-size: 16px;
-		font-weight: 500;
-		color: variables.$Blue;
+	.noResultContainer {
+		position: absolute;
+		top: 40%;
+		left: 0;
+		right: 0;
+
+		.icon {
+			width: 320px;
+			height: 240px;
+		}
+
+		.title {
+			margin-top: 20px;
+			font-size: 16px;
+			font-weight: 500;
+			color: variables.$Blue;
+		}
 	}
 }
