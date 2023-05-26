@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import { showHideAnimationVariants } from 'utils/animations';
 import ReactPortal from 'common/components/ReactPortal';
 import styles from './styles.module.scss';
 
@@ -11,28 +12,11 @@ type Props = {
 export const RegisteredProfilePopup = memo(({ show }: Props) => {
 	const { t } = useTranslation();
 
-	const animationVariants = {
-		initial: {
-			opacity: 0,
-			zIndex: -1,
-		},
-		show: {
-			opacity: 1,
-			zIndex: 1,
-		},
-		hide: {
-			opacity: 0,
-			transitionEnd: {
-				zIndex: -1,
-			},
-		},
-	};
-
 	return (
 		<ReactPortal wrapperId={'registered-profile-popup'}>
 			<motion.div
 				className={styles.container}
-				variants={animationVariants}
+				variants={showHideAnimationVariants}
 				initial={'initial'}
 				animate={show ? 'show' : 'hide'}
 				exit={'hide'}

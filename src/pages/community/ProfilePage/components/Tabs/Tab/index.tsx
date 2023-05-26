@@ -1,6 +1,7 @@
 import { memo } from 'react';
-import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import clsx from 'clsx';
+import { showHideAnimationVariants } from 'utils/animations';
 import styles from './styles.module.scss';
 
 type Props = {
@@ -15,7 +16,14 @@ export const Tab = memo(({ title, selected, onTabClick }: Props) => {
 	return (
 		<li onClick={onTabClick} className={styles.container}>
 			<p className={titleClass}>{title}</p>
-			{selected && <motion.div className={styles.underline} layoutId='underline' />}
+			<motion.div
+				variants={showHideAnimationVariants}
+				initial={'initial'}
+				animate={selected ? 'show' : 'hide'}
+				exit={'hide'}
+				transition={{ duration: 0.4 }}
+				className={styles.underline}
+			/>
 		</li>
 	);
 });

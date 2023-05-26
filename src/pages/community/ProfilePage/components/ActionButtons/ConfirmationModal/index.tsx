@@ -1,7 +1,7 @@
 import { memo, MouseEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { animationVariants } from '../../ProfileInformation/CropAvatarModal/helpers';
+import { showHideAnimationVariants } from 'utils/animations';
 import ReactPortal from 'common/components/ReactPortal';
 import { CloseIcon } from 'common/icons/common';
 import { CancelSubscriptionIcon } from 'common/icons/profile';
@@ -28,7 +28,7 @@ export const ConfirmationModal = memo(
 			<ReactPortal wrapperId={'delete-profile-modal'}>
 				<motion.div
 					className={styles.container}
-					variants={animationVariants}
+					variants={showHideAnimationVariants}
 					initial={'initial'}
 					animate={show ? 'show' : 'hide'}
 					exit={'hide'}

@@ -2,7 +2,7 @@ import { memo, MouseEvent, useCallback, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Area } from 'react-easy-crop';
 import { getCroppedImage } from './utils';
-import { animationVariants } from './helpers';
+import { showHideAnimationVariants } from 'utils/animations';
 import ReactPortal from 'common/components/ReactPortal';
 import { HeaderSection } from './components/HeaderSection';
 import { CropAvatarSection } from './components/CropAvatarSection';
@@ -45,7 +45,7 @@ export const CropAvatarModal = memo(
 			<ReactPortal wrapperId={'upload-avatar-modal'}>
 				<motion.div
 					className={styles.container}
-					variants={animationVariants}
+					variants={showHideAnimationVariants}
 					initial={'initial'}
 					animate={selectedImage ? 'show' : 'hide'}
 					exit={'hide'}
