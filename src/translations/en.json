@@ -54,10 +54,15 @@
 	"sign_up_page_sign_up_button": "Sign Up",
 	"sign_up_page_email_error": "Email is already registered",
 
-	"explore_page_no_result_title": "Nothing was found for the given parameters",
-
 	"profile_page_personal_information_tab": "Personal information",
 	"profile_page_password_information_tab": "Password information",
 	"profile_page_upload_avatar_modal_save_button": "Save",
-	"profile_page_logout_button": "Logout"
+	"profile_page_logout_button": "Logout",
+	"profile_page_delete_profile_button": "Delete profile",
+	"profile_page_confirmation_modal_title": "Are you sure?",
+	"profile_page_confirmation_modal_description": "Do you really want to delete all records? This process can not be undone",
+	"profile_page_confirmation_modal_cancel_button": "Cancel",
+	"profile_page_confirmation_modal_delete_button": "Delete",
+
+	"explore_page_no_result_title": "Nothing was found for the given parameters"
 }

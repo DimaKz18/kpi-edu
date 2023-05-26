@@ -1,6 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorResponse } from '../api';
-import { registerProfile, fetchProfile, updateProfile, updatePassword } from './actions';
+import {
+	registerProfile,
+	fetchProfile,
+	updateProfile,
+	updatePassword,
+	deleteProfile,
+} from './actions';
 import { Profile } from './models';
 
 export type ProfileState = {
@@ -11,6 +17,7 @@ export type ProfileState = {
 	loadingUpdatedProfile: boolean;
 	passwordUpdated: boolean;
 	loadingUpdatedPassword: boolean;
+	loadingDeleteProfile: boolean;
 };
 
 const initialState: ProfileState = {
@@ -21,6 +28,7 @@ const initialState: ProfileState = {
 	loadingUpdatedProfile: false,
 	passwordUpdated: false,
 	loadingUpdatedPassword: false,
+	loadingDeleteProfile: false,
 };
 
 const profileSlice = createSlice({
@@ -86,6 +94,17 @@ const profileSlice = createSlice({
 			})
 			.addCase(updatePassword.rejected, (state) => {
 				state.loadingUpdatedPassword = false;
+			})
+
+			.addCase(deleteProfile.fulfilled, (state) => {
+				state.passwordUpdated = true;
+				state.loadingDeleteProfile = false;
+			})
+			.addCase(deleteProfile.pending, (state) => {
+				state.loadingDeleteProfile = true;
+			})
+			.addCase(deleteProfile.rejected, (state) => {
+				state.loadingDeleteProfile = false;
 			});
 	},
 });

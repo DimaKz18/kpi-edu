@@ -2,6 +2,7 @@ import {
 	axiosGetRequest,
 	axiosPostRequest,
 	axiosPatchRequest,
+	axiosDeleteRequest,
 	getRegisterRoute,
 	getProfileRoute,
 } from '../api';
@@ -24,4 +25,8 @@ export const updatePasswordCall = (data: PasswordDto) => {
 		`${getProfileRoute()}/change-password`,
 		data
 	);
+};
+
+export const deleteProfileCall = () => {
+	return axiosDeleteRequest<void, void>(`${getProfileRoute()}`);
 };

@@ -54,10 +54,15 @@
 	"sign_up_page_sign_up_button": "Зареєструватись",
 	"sign_up_page_email_error": "Пошта вже зареєстрована",
 
-	"explore_page_no_result_title": "Для вказаних параметрів нічого не знайдено",
-
 	"profile_page_personal_information_tab": "Персональна інформація",
 	"profile_page_password_information_tab": "Інформація про пароль",
 	"profile_page_upload_avatar_modal_save_button": "Зберегти",
-	"profile_page_logout_button": "Вийти"
+	"profile_page_logout_button": "Вийти",
+	"profile_page_delete_profile_button": "Видалити профіль",
+	"profile_page_confirmation_modal_title": "Ви впевнені?",
+	"profile_page_confirmation_modal_description": "Ви справді хочете видалити всі записи? Цей процес не можна скасувати",
+	"profile_page_confirmation_modal_cancel_button": "Скасувати",
+	"profile_page_confirmation_modal_delete_button": "Видалити",
+
+	"explore_page_no_result_title": "Для вказаних параметрів нічого не знайдено"
 }

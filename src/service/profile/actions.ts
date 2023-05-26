@@ -5,6 +5,7 @@ import {
 	registerProfileCall,
 	updateProfileCall,
 	updatePasswordCall,
+	deleteProfileCall,
 } from './service';
 
 export const registerProfile = createAppAsyncThunk(
@@ -31,3 +32,7 @@ export const updatePassword = createAppAsyncThunk(
 		return updatePasswordCall(data);
 	}
 );
+
+export const deleteProfile = createAppAsyncThunk('profile/deleteProfile', () => {
+	return deleteProfileCall();
+});

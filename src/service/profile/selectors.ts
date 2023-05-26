@@ -37,3 +37,8 @@ export const selectPasswordUpdated = createSelector(
 	[getProfileState],
 	(profileState) => profileState.passwordUpdated
 );
+
+export const selectLoadingDeleteProfile = createSelector(
+	[getProfileState],
+	(profileState) => profileState.loadingDeleteProfile
+);

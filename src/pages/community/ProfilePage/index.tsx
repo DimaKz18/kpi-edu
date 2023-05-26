@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import { getAuth } from '@firebase/auth';
 import { useAppDispatch, useAppSelector } from 'store';
 import {
+	deleteProfile,
+	selectLoadingDeleteProfile,
 	selectLoadingUpdatedPassword,
 	selectLoadingUpdatedProfile,
 	selectPasswordUpdated,
@@ -16,26 +17,26 @@ import { PasswordDto, ProfileDto } from 'service/profile/dtos';
 import { PERSONAL_INFORMATION_TAB } from './helpers';
 import { NavigationLayout } from 'layout/NavigationLayout';
 import { ProfileInformation } from './components/ProfileInformation';
+import { ActionButtons } from './components/ActionButtons';
 import { Tabs } from './components/Tabs';
 import { PersonalInformationSection } from './components/PersonalInformationSection';
 import { PasswordInformationSection } from './components/PasswordInformationSection';
-import { SecondaryButton } from 'common/components/SecondaryButton';
 import styles from './styles.module.scss';
 
 export const ProfilePage = () => {
 	const [selectedTab, setSelectedTab] = useState(PERSONAL_INFORMATION_TAB);
 
-	const { t } = useTranslation();
 	const dispatch = useAppDispatch();
 	const profile = useAppSelector(selectProfile);
 	const passwordUpdated = useAppSelector(selectPasswordUpdated);
 	const loadingUpdatedProfile = useAppSelector(selectLoadingUpdatedProfile);
 	const loadingUpdatedPassword = useAppSelector(selectLoadingUpdatedPassword);
+	const loadingDeleteProfile = useAppSelector(selectLoadingDeleteProfile);
 
 	const selectedPersonalInformationSection = selectedTab === PERSONAL_INFORMATION_TAB;
 
 	useEffect(() => {
-		// logout after updating password
+		// logout after updating password or deleting profile
 		if (passwordUpdated) {
 			getAuth().signOut();
 			dispatch(setProfile(undefined));
@@ -87,10 +88,14 @@ export const ProfilePage = () => {
 		[dispatch]
 	);
 
-	const onLogoutClick = useCallback(() => {
+	const handleLogoutClick = useCallback(() => {
 		getAuth().signOut();
 		dispatch(setProfile(undefined));
 		localStorage.removeItem('token');
+	}, [dispatch]);
+
+	const handleDeleteProfileClick = useCallback(() => {
+		dispatch(deleteProfile());
 	}, [dispatch]);
 
 	return (
@@ -102,6 +107,11 @@ export const ProfilePage = () => {
 						firstName={profile.first_name}
 						lastName={profile.last_name}
 						onUpdateAvatar={handleUpdateAvatar}
+					/>
+					<ActionButtons
+						loadingDeleteProfile={loadingDeleteProfile}
+						onLogoutClick={handleLogoutClick}
+						onDeleteProfileClick={handleDeleteProfileClick}
 					/>
 					<Tabs selectedTab={selectedTab} onTabClick={handleTabClick} />
 					{selectedPersonalInformationSection ? (
@@ -117,11 +127,6 @@ export const ProfilePage = () => {
 							onUpdatePasswordInformation={handleUpdatePasswordInformation}
 						/>
 					)}
-					<SecondaryButton
-						title={t('profile_page_logout_button')}
-						className={styles.logoutButton}
-						onClick={onLogoutClick}
-					/>
 				</div>
 			) : (
 				<></>
