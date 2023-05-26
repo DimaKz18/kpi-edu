@@ -2,10 +2,11 @@ import {
 	axiosGetRequest,
 	axiosPostRequest,
 	axiosPatchRequest,
+	axiosDeleteRequest,
 	getRegisterRoute,
 	getProfileRoute,
 } from '../api';
-import { ProfileDto, ProfileResponse, RegisterDto } from './dtos';
+import { PasswordDto, ProfileDto, ProfileResponse, RegisterDto } from './dtos';
 
 export const registerProfileCall = (data: RegisterDto) => {
 	return axiosPostRequest<RegisterDto, void>(`${getRegisterRoute()}`, data, true);
@@ -17,4 +18,15 @@ export const fetchProfileCall = () => {
 
 export const updateProfileCall = (data: ProfileDto) => {
 	return axiosPatchRequest<ProfileDto, ProfileResponse>(`${getProfileRoute()}`, data);
+};
+
+export const updatePasswordCall = (data: PasswordDto) => {
+	return axiosPatchRequest<PasswordDto, void>(
+		`${getProfileRoute()}/change-password`,
+		data
+	);
+};
+
+export const deleteProfileCall = () => {
+	return axiosDeleteRequest<void, void>(`${getProfileRoute()}`);
 };

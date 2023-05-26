@@ -1,27 +1,41 @@
+@use 'utils/variables';
+
 .container {
 	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
 
 	.avatar {
-		width: 80px;
-		height: 80px;
-		cursor: auto;
+		width: 100px;
+		height: 100px;
 	}
 
-	.personalInformationContainer {
-		margin-left: 20px;
+	.removeIconContainer {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: absolute;
+		top: 6px;
+		right: 36px;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		cursor: pointer;
+		background-color: variables.$BlackTransparent60;
 
-		.fullName {
-			font-size: 18px;
+		.removeIcon {
+			width: 12px;
+			height: 12px;
 		}
+	}
 
-		.actionButtonsContainer {
-			margin-top: 20px;
-			display: flex;
-			align-items: center;
+	.fileInput {
+		display: none;
+	}
 
-			.logoutButton {
-				margin-left: 10px;
-			}
-		}
+	.fullName {
+		margin-top: 20px;
+		font-size: 18px;
 	}
 }

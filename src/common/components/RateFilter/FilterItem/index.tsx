@@ -13,7 +13,7 @@ export const FilterItem = memo(({ active, onFilterClick }: Props) => {
 			{active ? (
 				<ActiveStarIcon onClick={onFilterClick} />
 			) : (
-				<InactiveStarIcon onClick={onFilterClick} />
+				<InactiveStarIcon className={styles.inactiveIcon} onClick={onFilterClick} />
 			)}
 		</div>
 	);

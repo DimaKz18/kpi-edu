@@ -1,1 +1,1 @@
-export type MediaRegion = 'kyiv' | 'zhytomyr' | 'lviv' | 'odesa' | 'poltava';
+export type MediaRegion = 'kyiv' | 'lviv' | 'cherkasy';

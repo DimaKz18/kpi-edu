@@ -1,1 +1,1 @@
-export type MediaSpecialization = 'sport' | 'politics' | 'culture' | 'general';
+export type MediaSpecialization = 'politics' | 'culture' | 'general';

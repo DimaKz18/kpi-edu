@@ -1,0 +1,7 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	padding: 0 0 10px;
+	border-bottom: 1px solid variables.$LightGrey;
+}

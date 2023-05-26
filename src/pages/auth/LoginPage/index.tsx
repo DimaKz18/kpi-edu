@@ -82,7 +82,7 @@ export const LoginPage = () => {
 		if (profileRegistered) {
 			setTimeout(() => {
 				dispatch(setProfileRegistered(false)); // set profile as unregistered after redirecting from sign up page
-			}, 3000);
+			}, 5000);
 		}
 	}, [dispatch, profileRegistered]);
 

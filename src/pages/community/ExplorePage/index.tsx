@@ -1,4 +1,5 @@
 import { ChangeEvent, useCallback, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useFetchMediasQuery } from 'service/media';
 import { MediaFilters, MediaFilterKey } from './types';
 import { useDebounceValue, useSearch } from 'hooks';
@@ -16,6 +17,7 @@ export const ExplorePage = () => {
 		rate: 0,
 	});
 
+	const navigate = useNavigate();
 	const { search, handleSearchChange } = useSearch();
 	const debouncedSearch = useDebounceValue(search.trim(), 300);
 
@@ -44,6 +46,13 @@ export const ExplorePage = () => {
 		[mediaFilters]
 	);
 
+	const handleMediaClick = useCallback(
+		(mediaId: number) => {
+			navigate(`/media/${mediaId}`);
+		},
+		[navigate]
+	);
+
 	return (
 		<NavigationLayout>
 			<div className={styles.container}>
@@ -55,7 +64,11 @@ export const ExplorePage = () => {
 					selectedRateFilter={mediaFilters.rate}
 					onMediaFilterClick={handleMediaFilterClick}
 				/>
-				<MediaList medias={medias || []} loadingMedias={loadingMedias} />
+				<MediaList
+					medias={medias || []}
+					loadingMedias={loadingMedias}
+					onMediaClick={handleMediaClick}
+				/>
 			</div>
 		</NavigationLayout>
 	);

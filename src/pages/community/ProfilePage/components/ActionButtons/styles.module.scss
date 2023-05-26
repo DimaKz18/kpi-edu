@@ -1,0 +1,14 @@
+.container {
+	display: flex;
+	align-items: center;
+	margin-top: 40px;
+
+	.logoutButton {
+		width: 170px;
+	}
+
+	.deleteProfileButton {
+		width: 170px;
+		margin-left: 20px;
+	}
+}

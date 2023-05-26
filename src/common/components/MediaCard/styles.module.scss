@@ -3,35 +3,67 @@
 .container {
 	display: flex;
 	flex-direction: column;
-	justify-content: space-between;
+	position: relative;
 	text-align: left;
-	height: 370px;
-	padding-bottom: 10px;
-	border-radius: 20px;
-	background-color: variables.$SkyBlue;
+	height: 400px;
+	padding: 6px;
+	border-radius: 10px;
+	cursor: pointer;
+	box-shadow: variables.$BLackTransparent35 0px 0px 15px;
+	background-color: variables.$LightGrey;
 
-	.photo {
+	.logoContainer {
 		width: 100%;
-		height: 150px;
-		border-radius: 20px;
+		height: 160px;
+		background-color: variables.$White;
+		border-radius: 10px;
+
+		.logo {
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+		}
+	}
+
+	.mediaTitle {
+		min-height: 30px;
+		margin-top: 10px;
+		text-align: center;
+		font-size: 18px;
+		font-weight: 700;
 	}
 
 	.mediaInformation {
-		padding: 10px;
-
-		.mediaTitle {
-			font-size: 18px;
-			font-weight: 700;
-		}
+		margin-top: 20px;
+		padding: 0 10px;
 
 		.filterTitle {
 			margin-top: 4px;
-			font-size: 16px;
-			font-style: italic;
+			font-size: 14px;
+			text-transform: capitalize;
+		}
+
+		.rateContainer {
+			display: flex;
+			align-items: center;
+
+			.starIcon {
+				width: 20px;
+				height: 20px;
+				margin-left: 6px;
+
+				&:not(:first-of-type) {
+					margin-left: 0;
+				}
+			}
 		}
 	}
+
 	.subscribeButton {
-		width: calc(100% - 20px);
-		margin: 0 auto;
+		position: absolute;
+		bottom: 6px;
+		left: 6px;
+		right: 6px;
+		height: 40px;
 	}
 }

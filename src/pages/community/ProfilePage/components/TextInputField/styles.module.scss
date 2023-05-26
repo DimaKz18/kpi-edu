@@ -1,0 +1,29 @@
+@use 'utils/variables';
+
+.container {
+	min-height: 70px;
+
+	.input {
+		width: 100%;
+		height: 40px;
+		padding: 10px;
+		border: none;
+		outline: none;
+		border-radius: 6px;
+		color: variables.$Black;
+
+		&::placeholder {
+			color: variables.$Blue;
+		}
+	}
+
+	.inputWithError {
+		border: 1px solid variables.$DarkRed;
+	}
+
+	.error {
+		margin-top: 4px;
+		font-size: 10px;
+		color: variables.$DarkRed;
+	}
+}

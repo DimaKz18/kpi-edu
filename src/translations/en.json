@@ -9,22 +9,25 @@
 	"search_input_placeholder": "Search",
 
 	"media_specialization_filter_title": "Specialization",
-	"media_sport_specialization_filter_title": "Sport",
 	"media_politics_specialization_filter_title": "Politics",
 	"media_culture_specialization_filter_title": "Culture",
 	"media_general_specialization_filter_title": "General",
 	"media_type_filter_title": "Type",
 	"media_agency_type_filter_title": "Agency",
-	"media_magazine_type_filter_title": "Magazine",
 	"media_newspaper_type_filter_title": "Newspaper",
 	"media_online_specialization_filter_title": "Online media",
 	"media_region_filter_title": "Region",
-	"media_kyiv_region_filter_title": "Kyiv region",
-	"media_zhytomyr_region_filter_title": "Zhytomyr region",
-	"media_lviv_region_filter_title": "Lviv region",
-	"media_odesa_region_filter_title": "Odesa region",
-	"media_poltava_region_filter_title": "Poltava region",
+	"media_kyiv_region_filter_title": "Kyiv",
+	"media_lviv_region_filter_title": "Lviv",
+	"media_cherkasy_region_filter_title": "Cherkasy",
 	"media_remove_filter_title": "Remove filter",
+
+	"media_card_specialization_title": "Specialization",
+	"media_card_type_title": "Type",
+	"media_card_region_title": "Region",
+	"media_card_rate_title": "Rate",
+	"media_card_subscribe_button": "Subscribe",
+	"media_card_unsubscribe_button": "Unsubscribe",
 
 	"auth_page_login_tab": "Log In",
 	"auth_page_sign_up_tab": "Sign Up",
@@ -51,13 +54,15 @@
 	"sign_up_page_sign_up_button": "Sign Up",
 	"sign_up_page_email_error": "Email is already registered",
 
-	"explore_page_no_result_title": "Nothing was found for the given parameters",
-
-	"profile_page_edit_button": "Edit",
+	"profile_page_personal_information_tab": "Personal information",
+	"profile_page_password_information_tab": "Password information",
+	"profile_page_upload_avatar_modal_save_button": "Save",
 	"profile_page_logout_button": "Logout",
-	"profile_page_updated_profile_first_name_placeholder": "first name",
-	"profile_page_updated_profile_first_name_error": "First name should be greater than 0 and less than 50",
-	"profile_page_updated_profile_last_name_placeholder": "last name",
-	"profile_page_updated_profile_last_name_error": "Last name should be greater than 0 and less than 50",
-	"profile_page_updated_profile_save_button": "Save"
+	"profile_page_delete_profile_button": "Delete profile",
+	"profile_page_confirmation_modal_title": "Are you sure?",
+	"profile_page_confirmation_modal_description": "Do you really want to delete all records? This process can not be undone",
+	"profile_page_confirmation_modal_cancel_button": "Cancel",
+	"profile_page_confirmation_modal_delete_button": "Delete",
+
+	"explore_page_no_result_title": "Nothing was found for the given parameters"
 }

@@ -1,0 +1,31 @@
+@use 'utils/variables';
+
+.container {
+	text-align: center;
+	position: relative;
+	min-width: 260px;
+	padding: 16px;
+	list-style: none;
+	cursor: pointer;
+
+	.title {
+		position: absolute;
+		left: 0;
+		right: 0;
+		font-weight: 700;
+		color: variables.$LightGrey;
+	}
+
+	.activeTab {
+		color: variables.$DarkRed;
+	}
+
+	.underline {
+		position: absolute;
+		bottom: -11px;
+		left: 0;
+		right: 0;
+		height: 1px;
+		background-color: variables.$DarkRed;
+	}
+}

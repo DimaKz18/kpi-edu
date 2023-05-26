@@ -1,117 +1,86 @@
-import { memo, useCallback, useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { useAppSelector } from 'store';
-import { selectProfile } from 'service/profile';
-import { ProfileDto } from 'service/profile/dtos';
-import { useDebounceCallback } from 'hooks';
-import { getProfileDto, validateProfile } from './utils';
-import { UpdatedProfile, UpdatedProfileErrors, UpdatedProfileKey } from './types';
+import { ChangeEvent, memo, useCallback, useRef, useState } from 'react';
+import { CloseIcon } from 'common/icons/common';
 import { Avatar } from 'common/components/Avatar';
-import { PrimaryButton } from 'common/components/PrimaryButton';
-import { SecondaryButton } from 'common/components/SecondaryButton';
-import { EditProfileModal } from '../EditProfileModal';
+import { CropAvatarModal } from './CropAvatarModal';
 import styles from './styles.module.scss';
 
 type Props = {
-	onSaveProfileClick: (profile: ProfileDto) => void;
-	onLogoutClick: () => void;
+	avatar: string | null;
+	firstName: string;
+	lastName: string;
+	onUpdateAvatar: (avatar: string | null) => void;
 };
 
-export const ProfileInformation = memo(({ onSaveProfileClick, onLogoutClick }: Props) => {
-	const [showEditProfileModal, setShowEditProfileModal] = useState(false);
-	const [updatedProfile, setUpdatedProfile] = useState<UpdatedProfile>();
-	const [errors, setErrors] = useState<UpdatedProfileErrors>({});
-	const [showErrors, setShowErrors] = useState(false);
+export const ProfileInformation = memo(
+	({ avatar, firstName, lastName, onUpdateAvatar }: Props) => {
+		const [selectedImage, setSelectedImage] = useState('');
 
-	const { t } = useTranslation();
-	const profile = useAppSelector(selectProfile);
+		const fullName = `${firstName} ${lastName}`;
 
-	const fullName = `${updatedProfile?.firstName} ${updatedProfile?.lastName}`;
-	const hasErrors = Object.values(errors).length > 0;
-	const disabled = hasErrors && showErrors;
+		const hiddenFileInputRef = useRef<HTMLInputElement>(null);
 
-	useEffect(() => {
-		if (profile) {
-			const updatedProfile: UpdatedProfile = {
-				firstName: profile.first_name,
-				lastName: profile.last_name,
-				avatar: profile.avatar,
-				isAuthor: profile.is_author,
-			};
+		const handleAvatarClick = useCallback(() => {
+			hiddenFileInputRef.current?.click(); // trigger file input modal
+		}, []);
 
-			setUpdatedProfile(updatedProfile);
-		}
-	}, [profile]);
+		const handleRemoveAvatarClick = useCallback(() => {
+			onUpdateAvatar(null);
+		}, [onUpdateAvatar]);
 
-	useEffect(() => {
-		if (!updatedProfile) return;
-		setShowErrors(false);
-		setErrors(validateProfile(updatedProfile, t)); // validate profile
-	}, [updatedProfile, t]);
+		const onMediaChange = useCallback(async (e: ChangeEvent<HTMLInputElement> | null) => {
+			if (!e || !e.target.files || e.target.files.length === 0) return;
+			const file = e.target.files[0];
+			const isImageFile = file.type.split('/')[0] === 'image';
 
-	const handleToggleProfileModal = useCallback(() => {
-		setShowEditProfileModal((prev) => !prev);
-	}, []);
+			if (isImageFile) {
+				setSelectedImage(URL.createObjectURL(file)); // save selected image
+			}
+		}, []);
 
-	const handleProfileChange = useCallback(
-		(field: UpdatedProfileKey, value: string | null) => {
-			if (!updatedProfile) return;
-			const newUpdatedProfile = {
-				...updatedProfile,
-				[field]: value,
-			};
-			setUpdatedProfile(newUpdatedProfile);
-		},
-		[updatedProfile]
-	);
+		const handleCloseCropAvatarModalClick = useCallback(() => {
+			setSelectedImage('');
+		}, []);
 
-	const debouncedProfileChange = useDebounceCallback(
-		(field: UpdatedProfileKey, value: string | null) => handleProfileChange(field, value),
-		200
-	);
+		const handleAvatarChange = useCallback(
+			(avatar: string) => {
+				onUpdateAvatar(avatar);
+			},
+			[onUpdateAvatar]
+		);
 
-	const handleSaveProfileClick = useCallback(() => {
-		if (hasErrors || !updatedProfile) {
-			setShowErrors(true);
-			return;
-		}
-		const profileDto = getProfileDto(updatedProfile);
-		onSaveProfileClick(profileDto); // submit profile
-	}, [hasErrors, onSaveProfileClick, updatedProfile]);
-
-	return updatedProfile ? (
-		<div className={styles.container}>
-			<Avatar
-				profileImage={updatedProfile.avatar}
-				avatarContainerClassName={styles.avatar}
-				avatarClassName={styles.avatar}
-			/>
-			<div className={styles.personalInformationContainer}>
+		return (
+			<div className={styles.container}>
+				<Avatar
+					profileImage={avatar}
+					avatarContainerClassName={styles.avatar}
+					avatarClassName={styles.avatar}
+					onClick={handleAvatarClick}
+				/>
+				{avatar && (
+					<div className={styles.removeIconContainer}>
+						<CloseIcon
+							className={styles.removeIcon}
+							color='white'
+							onClick={handleRemoveAvatarClick}
+						/>
+					</div>
+				)}
+				<input
+					type='file'
+					id='input-file-upload'
+					title=''
+					value=''
+					className={styles.fileInput}
+					ref={hiddenFileInputRef}
+					onChange={onMediaChange}
+				/>
 				<p className={styles.fullName}>{fullName}</p>
-				<div className={styles.actionButtonsContainer}>
-					<PrimaryButton
-						title={t('profile_page_edit_button')}
-						onClick={handleToggleProfileModal}
-					/>
-					<SecondaryButton
-						title={t('profile_page_logout_button')}
-						className={styles.logoutButton}
-						onClick={onLogoutClick}
-					/>
-				</div>
+				<CropAvatarModal
+					selectedImage={selectedImage}
+					onCloseClick={handleCloseCropAvatarModalClick}
+					onAvatarChange={handleAvatarChange}
+				/>
 			</div>
-			<EditProfileModal
-				show={showEditProfileModal}
-				firstName={updatedProfile.firstName}
-				lastName={updatedProfile.lastName}
-				avatar={updatedProfile.avatar}
-				disabled={disabled}
-				errors={errors}
-				showErrors={showErrors}
-				onCloseClick={handleToggleProfileModal}
-				onProfileChange={debouncedProfileChange}
-				onSaveProfileClick={handleSaveProfileClick}
-			/>
-		</div>
-	) : null;
-});
+		);
+	}
+);

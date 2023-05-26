@@ -2,6 +2,7 @@ import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import { Media } from 'service/media/models';
+import { EmptyResultIcon } from 'common/icons/common';
 import { MediaCard } from 'common/components/MediaCard';
 import { Loader } from 'common/components/Loader';
 import styles from './styles.module.scss';
@@ -9,9 +10,10 @@ import styles from './styles.module.scss';
 type Props = {
 	medias: Media[];
 	loadingMedias: boolean;
+	onMediaClick: (mediaId: number) => void;
 };
 
-export const MediaList = memo(({ medias, loadingMedias }: Props) => {
+export const MediaList = memo(({ medias, loadingMedias, onMediaClick }: Props) => {
 	const { t } = useTranslation();
 
 	const hasMedias = medias.length > 0;
@@ -26,13 +28,8 @@ export const MediaList = memo(({ medias, loadingMedias }: Props) => {
 							return (
 								<MediaCard
 									key={media.id}
-									url={
-										'https://prm.ua/wp-content/uploads/2020/06/Znimok-ekrana-2020-06-16-o-20.53.38.png'
-									}
-									title={'Ukrinform'}
-									specialization={'politics'}
-									type={'online'}
-									region={'kyiv'}
+									{...media}
+									onMediaClick={() => onMediaClick(media.id)}
 								/>
 							);
 						})}
@@ -40,7 +37,10 @@ export const MediaList = memo(({ medias, loadingMedias }: Props) => {
 				</AnimatePresence>
 			)}
 			{showNoResultText && (
-				<p className={styles.noResultTitle}>{t('explore_page_no_result_title')}</p>
+				<div className={styles.noResultContainer}>
+					<EmptyResultIcon className={styles.icon} />
+					<p className={styles.title}>{t('explore_page_no_result_title')}</p>
+				</div>
 			)}
 			<Loader show={loadingMedias} />
 		</div>
