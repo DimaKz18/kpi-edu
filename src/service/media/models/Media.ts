@@ -10,4 +10,7 @@ export type Media = {
 	region: MediaRegion;
 	rate: number;
 	subscribed: boolean;
+	subscriptions: number;
+	likes: number;
+	posts: number;
 };

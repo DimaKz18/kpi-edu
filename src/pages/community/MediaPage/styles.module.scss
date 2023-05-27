@@ -1,0 +1,22 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 40px;
+
+	.mediaInformationContainer {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+
+		.verticalLine {
+			width: 2px;
+			height: 600px;
+			margin-left: 20px;
+			margin-right: 20px;
+			background-color: variables.$LightGrey;
+		}
+	}
+}

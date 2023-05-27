@@ -64,5 +64,10 @@
 	"profile_page_confirmation_modal_cancel_button": "Cancel",
 	"profile_page_confirmation_modal_delete_button": "Delete",
 
-	"explore_page_no_result_title": "Nothing was found for the given parameters"
+	"explore_page_no_result_title": "Nothing was found for the given parameters",
+
+	"media_page_statistics_title": "Media statistics",
+	"media_page_subscriptions_statistics_title": "Subscriptions",
+	"media_page_likes_statistics_title": "Likes",
+	"media_page_posts_statistics_title": "Posts"
 }

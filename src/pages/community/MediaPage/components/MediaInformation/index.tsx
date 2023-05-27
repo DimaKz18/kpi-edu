@@ -5,32 +5,32 @@ import {
 	getMediaRegionTitle,
 	getMediaSpecializationTitle,
 	getMediaTypeTitle,
-} from './utils';
+} from 'common/components/MediaCard/utils';
 import { ActiveStarIcon } from 'common/icons/community';
-import { SubscribeButton } from '../SubscribeButton';
+import { SubscribeButton } from 'common/components/SubscribeButton';
 import styles from './styles.module.scss';
 
 type Props = {
 	url: string;
 	title: string;
+	description: string;
 	specialization: MediaSpecialization;
 	type: MediaType;
 	region: MediaRegion;
 	rate: number;
 	subscribed: boolean;
-	onMediaClick?: () => void;
 };
 
-export const MediaCard = memo(
+export const MediaInformation = memo(
 	({
 		url,
 		title,
+		description,
 		specialization,
 		type,
 		region,
 		rate,
 		subscribed,
-		onMediaClick,
 	}: Props) => {
 		const { t } = useTranslation();
 
@@ -40,20 +40,23 @@ export const MediaCard = memo(
 		const stars = new Array(rate).fill('');
 
 		return (
-			<div className={styles.container} onClick={onMediaClick}>
+			<div className={styles.container}>
 				<div className={styles.logoContainer}>
 					<img alt={title} src={url} className={styles.logo} />
 				</div>
-				<p className={styles.mediaTitle}>{title}</p>
 				<div className={styles.mediaInformation}>
-					<p className={styles.filterTitle}>{specializationTitle}</p>
-					<p className={styles.filterTitle}>{typeTitle}</p>
-					<p className={styles.filterTitle}>{regionTitle}</p>
-					<div className={styles.rateContainer}>
-						<p className={styles.filterTitle}>{t('media_card_rate_title')} -</p>
-						{stars.map((_, idx) => {
-							return <ActiveStarIcon key={idx} className={styles.starIcon} />;
-						})}
+					<p className={styles.title}>{title}</p>
+					<p className={styles.description}>{description}</p>
+					<div className={styles.filtersContainer}>
+						<p className={styles.filterTitle}>{specializationTitle}</p>
+						<p className={styles.filterTitle}>{typeTitle}</p>
+						<p className={styles.filterTitle}>{regionTitle}</p>
+						<div className={styles.rateContainer}>
+							<p className={styles.rateTitle}>{t('media_card_rate_title')} -</p>
+							{stars.map((_, idx) => {
+								return <ActiveStarIcon key={idx} className={styles.starIcon} />;
+							})}
+						</div>
 					</div>
 				</div>
 				<SubscribeButton subscribed={subscribed} className={styles.subscribeButton} />
