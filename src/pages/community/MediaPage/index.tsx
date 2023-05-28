@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { getMedia } from 'test';
+import { useFetchMediaQuery } from 'service/media';
 import { NavigationLayout } from 'layout/NavigationLayout';
 import { MediaInformation } from './components/MediaInformation';
 import { MediaPieChart } from './components/MediaPieChart';
@@ -9,9 +9,9 @@ import styles from './styles.module.scss';
 export const MediaPage = () => {
 	const location = useLocation();
 	const pathname = location.pathname;
-	const mediaId = Number(pathname.split('/')[2]);
+	const mediaId = pathname.split('/')[2];
 
-	const media = getMedia(mediaId);
+	const { data: media, isFetching: loadingMedia } = useFetchMediaQuery(mediaId);
 
 	return (
 		<NavigationLayout>
@@ -27,7 +27,7 @@ export const MediaPage = () => {
 						/>
 					</div>
 				)}
-				<Loader show={false} />
+				<Loader show={loadingMedia} />
 			</div>
 		</NavigationLayout>
 	);

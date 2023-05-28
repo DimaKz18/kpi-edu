@@ -1,7 +1,7 @@
 import { MediaRegion, MediaSpecialization, MediaType } from '.';
 
 export type Media = {
-	id: number;
+	id: string;
 	url: string;
 	title: string;
 	description: string;

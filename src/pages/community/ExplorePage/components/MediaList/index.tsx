@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AnimatePresence, motion } from 'framer-motion';
 import { Media } from 'service/media/models';
 import { EmptyResultIcon } from 'common/icons/common';
 import { MediaCard } from 'common/components/MediaCard';
@@ -10,7 +9,7 @@ import styles from './styles.module.scss';
 type Props = {
 	medias: Media[];
 	loadingMedias: boolean;
-	onMediaClick: (mediaId: number) => void;
+	onMediaClick: (mediaId: string) => void;
 };
 
 export const MediaList = memo(({ medias, loadingMedias, onMediaClick }: Props) => {
