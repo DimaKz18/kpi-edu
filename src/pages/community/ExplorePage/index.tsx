@@ -46,7 +46,7 @@ export const ExplorePage = () => {
 	);
 
 	const handleMediaClick = useCallback(
-		(mediaId: number) => {
+		(mediaId: string) => {
 			navigate(`/media/${mediaId}`);
 		},
 		[navigate]
