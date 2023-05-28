@@ -1,5 +1,6 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
+import { MediaRegion, MediaSpecialization, MediaType } from 'service/media/models';
 import { MediaFilterKey } from '../../types';
 import {
 	POLITICS_SPECIALIZATION_FILTER,
@@ -17,9 +18,9 @@ import { RateFilter } from 'common/components/RateFilter';
 import styles from './styles.module.scss';
 
 type Props = {
-	selectedSpecializationFilter: string;
-	selectedTypeFilter: string;
-	selectedRegionFilter: string;
+	selectedSpecializationFilter: MediaSpecialization | null;
+	selectedTypeFilter: MediaType | null;
+	selectedRegionFilter: MediaRegion | null;
 	selectedRateFilter: number;
 	onMediaFilterClick: (filterKey: MediaFilterKey, value: string | number) => void;
 };

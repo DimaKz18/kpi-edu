@@ -1,7 +1,9 @@
+import { MediaRegion, MediaSpecialization, MediaType } from 'service/media/models';
+
 export type MediaFilters = {
-	specialization: string;
-	type: string;
-	region: string;
+	specialization: MediaSpecialization | null;
+	type: MediaType | null;
+	region: MediaRegion | null;
 	rate: number;
 };
 

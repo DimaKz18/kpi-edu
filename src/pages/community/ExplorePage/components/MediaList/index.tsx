@@ -22,19 +22,17 @@ export const MediaList = memo(({ medias, loadingMedias, onMediaClick }: Props) =
 	return (
 		<div className={styles.container}>
 			{hasMedias && (
-				<AnimatePresence>
-					<motion.div layout className={styles.mediaListContainer}>
-						{medias.map((media) => {
-							return (
-								<MediaCard
-									key={media.id}
-									{...media}
-									onMediaClick={() => onMediaClick(media.id)}
-								/>
-							);
-						})}
-					</motion.div>
-				</AnimatePresence>
+				<div className={styles.mediaListContainer}>
+					{medias.map((media) => {
+						return (
+							<MediaCard
+								key={media.id}
+								{...media}
+								onMediaClick={() => onMediaClick(media.id)}
+							/>
+						);
+					})}
+				</div>
 			)}
 			{showNoResultText && (
 				<div className={styles.noResultContainer}>

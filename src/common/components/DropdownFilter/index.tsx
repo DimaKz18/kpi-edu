@@ -6,7 +6,7 @@ import styles from './styles.module.scss';
 
 type Props = {
 	filters: FilterType[];
-	selectedFilter: string;
+	selectedFilter: string | null;
 	filterTitle: string;
 	onFilterClick: (filter?: string) => void;
 };

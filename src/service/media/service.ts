@@ -1,38 +1,23 @@
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import { createApi } from '@reduxjs/toolkit/query/react';
 import { protectedQuery } from 'service/api';
+import { MediasDto, MediasResponse } from './dtos';
 import { Media } from './models';
-
-// export const mediaService = createApi({
-// 	reducerPath: 'mediaService',
-// 	baseQuery: protectedQuery,
-// 	endpoints: (build) => ({
-// 		fetchMedia: build.query<Media[], string>({
-// 			query: (search: string) => ({
-// 				url: '/profile',
-// 			}),
-// 		}),
-// 	}),
-// });
 
 export const mediaService = createApi({
 	reducerPath: 'mediaService',
 	refetchOnFocus: true,
-	baseQuery: fetchBaseQuery({
-		baseUrl: 'https://api.github.com',
-	}),
+	baseQuery: protectedQuery,
 	endpoints: (build) => ({
-		fetchMedias: build.query<Media[], string>({
-			query: (search: string) => ({
-				url: '/search/users',
-				params: {
-					q: search,
-					per_page: 10,
-				},
-			}),
-			transformResponse: (response: any) => response.items,
+		fetchMedias: build.query<Media[], MediasDto>({
+			query: (params: MediasDto) => {
+				return {
+					url: '/media',
+					params,
+				};
+			},
+			transformResponse: (response: MediasResponse) => response.result,
 		}),
 	}),
 });
 
 export const { useFetchMediasQuery, useLazyFetchMediasQuery } = mediaService;
-
