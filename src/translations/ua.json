@@ -70,5 +70,8 @@
 	"media_page_statistics_title": "Статистика ЗМІ",
 	"media_page_subscriptions_statistics_title": "Підписки",
 	"media_page_likes_statistics_title": "Лайки",
-	"media_page_posts_statistics_title": "Пости"
+	"media_page_posts_statistics_title": "Пости",
+
+	"bookmarks_page_title": "Збережені ЗМІ",
+	"bookmarks_page_no_result_title": "Немає жодного збереженого ЗМІ"
 }

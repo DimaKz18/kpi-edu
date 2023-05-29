@@ -11,6 +11,7 @@ import { SubscribeButton } from 'common/components/SubscribeButton';
 import styles from './styles.module.scss';
 
 type Props = {
+	id: string;
 	url: string;
 	title: string;
 	description: string;
@@ -23,6 +24,7 @@ type Props = {
 
 export const MediaInformation = memo(
 	({
+		id,
 		url,
 		title,
 		description,
@@ -59,7 +61,11 @@ export const MediaInformation = memo(
 						</div>
 					</div>
 				</div>
-				<SubscribeButton subscribed={subscribed} className={styles.subscribeButton} />
+				<SubscribeButton
+					mediaId={id}
+					subscribed={subscribed}
+					className={styles.subscribeButton}
+				/>
 			</div>
 		);
 	}

@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { memo, MouseEvent } from 'react';
 import clsx from 'clsx';
 import { PrimaryButton } from '../PrimaryButton';
 import styles from './styles.module.scss';
@@ -8,7 +8,7 @@ type Props = {
 	loading?: boolean;
 	disabled?: boolean;
 	className?: string;
-	onClick?: () => void;
+	onClick?: (e?: MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const SecondaryButton = memo(

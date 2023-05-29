@@ -70,5 +70,8 @@
 	"media_page_statistics_title": "Media statistics",
 	"media_page_subscriptions_statistics_title": "Subscriptions",
 	"media_page_likes_statistics_title": "Likes",
-	"media_page_posts_statistics_title": "Posts"
+	"media_page_posts_statistics_title": "Posts",
+
+	"bookmarks_page_title": "Saved media",
+	"bookmarks_page_no_result_title": "There isn't any saved media"
 }
