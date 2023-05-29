@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MediaRegion, MediaSpecialization, MediaType } from 'service/media/models';
+import { useFetchSavedMediasQuery } from 'service/media';
 import {
 	getMediaRegionTitle,
 	getMediaSpecializationTitle,
@@ -18,23 +19,18 @@ type Props = {
 	type: MediaType;
 	region: MediaRegion;
 	rate: number;
-	subscribed: boolean;
 	onMediaClick?: () => void;
 };
 
 export const MediaCard = memo(
-	({
-		id,
-		url,
-		title,
-		specialization,
-		type,
-		region,
-		rate,
-		subscribed,
-		onMediaClick,
-	}: Props) => {
+	({ id, url, title, specialization, type, region, rate, onMediaClick }: Props) => {
 		const { t } = useTranslation();
+
+		const { data: savedMedias } = useFetchSavedMediasQuery();
+
+		const subscribed = Boolean(
+			savedMedias && savedMedias.find((media) => media.id === id)
+		);
 
 		const specializationTitle = getMediaSpecializationTitle(specialization, t);
 		const typeTitle = getMediaTypeTitle(type, t);
