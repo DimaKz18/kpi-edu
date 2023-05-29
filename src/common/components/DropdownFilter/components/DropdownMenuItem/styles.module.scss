@@ -20,6 +20,8 @@
 }
 
 .selectedContainer {
+	border-right: 1px solid variables.$LightBlue;
+	border-left: 1px solid variables.$LightBlue;
 	color: variables.$LightBlue;
 	background-color: variables.$White;
 }
