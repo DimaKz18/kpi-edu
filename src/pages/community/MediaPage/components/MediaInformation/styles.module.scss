@@ -1,0 +1,75 @@
+@use 'utils/variables';
+
+.container {
+	display: flex;
+	flex-direction: column;
+	width: 500px;
+
+	.logoContainer {
+		width: 100%;
+		height: 200px;
+		background-color: variables.$White;
+		border-radius: 10px;
+
+		.logo {
+			width: 100%;
+			height: 100%;
+			border-radius: 10px;
+		}
+	}
+
+	.mediaInformation {
+		padding: 10px;
+
+		.title {
+			text-align: center;
+			margin-top: 20px;
+			font-size: 22px;
+			font-weight: 700;
+		}
+
+		.description {
+			margin-top: 20px;
+			font-size: 20px;
+			line-height: 1.5;
+			font-style: italic;
+		}
+
+		.filtersContainer {
+			margin-top: 30px;
+
+			.filterTitle {
+				margin-top: 12px;
+				font-size: 18px;
+				text-transform: capitalize;
+			}
+
+			.rateContainer {
+				display: flex;
+				align-items: center;
+				margin-top: 6px;
+
+				.rateTitle {
+					margin-top: 4px;
+					font-size: 18px;
+					text-transform: capitalize;
+				}
+
+				.starIcon {
+					width: 30px;
+					height: 30px;
+					margin-left: 8px;
+
+					&:not(:first-of-type) {
+						margin-left: 2px;
+					}
+				}
+			}
+		}
+	}
+
+	.subscribeButton {
+		width: 250px;
+		margin: 30px auto 0;
+	}
+}

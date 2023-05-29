@@ -1,7 +1,7 @@
 import { MediaRegion, MediaSpecialization, MediaType } from '.';
 
 export type Media = {
-	id: number;
+	id: string;
 	url: string;
 	title: string;
 	description: string;
@@ -10,4 +10,7 @@ export type Media = {
 	region: MediaRegion;
 	rate: number;
 	subscribed: boolean;
+	subscriptions: number;
+	likes: number;
+	posts: number;
 };

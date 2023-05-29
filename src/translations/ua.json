@@ -21,6 +21,7 @@
 	"media_lviv_region_filter_title": "Львів",
 	"media_cherkasy_region_filter_title": "Полтава",
 	"media_remove_filter_title": "Видалити фільтр",
+	"media_rate_filter_reset_button": "Скинути",
 
 	"media_card_specialization_title": "Спеціалізація",
 	"media_card_type_title": "Тип",
@@ -64,5 +65,13 @@
 	"profile_page_confirmation_modal_cancel_button": "Скасувати",
 	"profile_page_confirmation_modal_delete_button": "Видалити",
 
-	"explore_page_no_result_title": "Для вказаних параметрів нічого не знайдено"
+	"explore_page_no_result_title": "Для вказаних параметрів нічого не знайдено",
+
+	"media_page_statistics_title": "Статистика ЗМІ",
+	"media_page_subscriptions_statistics_title": "Підписки",
+	"media_page_likes_statistics_title": "Лайки",
+	"media_page_posts_statistics_title": "Пости",
+
+	"bookmarks_page_title": "Збережені ЗМІ",
+	"bookmarks_page_no_result_title": "Немає жодного збереженого ЗМІ"
 }

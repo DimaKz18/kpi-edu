@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useFetchMediasQuery } from 'service/media';
 import { MediaFilters, MediaFilterKey } from './types';
 import { useDebounceValue, useSearch } from 'hooks';
+import { getMediasDto } from './utils';
 import { NavigationLayout } from 'layout/NavigationLayout';
 import { SearchInput } from 'common/components/SearchInput';
 import { Filters } from './components/Filters';
@@ -11,23 +12,21 @@ import styles from './styles.module.scss';
 
 export const ExplorePage = () => {
 	const [mediaFilters, setMediaFilters] = useState<MediaFilters>({
-		specialization: '',
-		type: '',
-		region: '',
+		specialization: null,
+		type: null,
+		region: null,
 		rate: 0,
 	});
 
 	const navigate = useNavigate();
 	const { search, handleSearchChange } = useSearch();
-	const debouncedSearch = useDebounceValue(search.trim(), 300);
+	const debouncedSearch = useDebounceValue(search.trim().toLocaleLowerCase(), 300);
 
-	const { data: medias, isFetching: loadingMedias } = useFetchMediasQuery(
-		debouncedSearch,
-		{
-			skip: debouncedSearch.length < 1,
-			refetchOnFocus: true,
-		}
-	);
+	const mediasDto = getMediasDto(debouncedSearch, mediaFilters);
+
+	const { data: medias, isFetching: loadingMedias } = useFetchMediasQuery(mediasDto, {
+		refetchOnFocus: true,
+	});
 
 	const onChange = useCallback(
 		(e: ChangeEvent<HTMLInputElement>) => {
@@ -47,7 +46,7 @@ export const ExplorePage = () => {
 	);
 
 	const handleMediaClick = useCallback(
-		(mediaId: number) => {
+		(mediaId: string) => {
 			navigate(`/media/${mediaId}`);
 		},
 		[navigate]

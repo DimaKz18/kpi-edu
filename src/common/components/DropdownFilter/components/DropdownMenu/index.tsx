@@ -9,7 +9,7 @@ import styles from './styles.module.scss';
 type Props = {
 	show: boolean;
 	filters: FilterType[];
-	selectedFilter: string;
+	selectedFilter: string | null;
 	onFilterClick: (filter?: string) => void;
 	onRemoveFilterClick: () => void;
 	onClickOutside: (event: Event) => void;
